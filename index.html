@@ -1179,6 +1179,29 @@
         }
     </style>
 
+    <!-- Tailwind CSS Dynamic JIT Engine with Artisan Park Custom Tokens -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: {
+                dark: '#0b2a2b',
+                sand: '#eae4d8',
+                sage: '#566b5e',
+                cream: '#ebdbc2'
+              }
+            },
+            fontFamily: {
+              serif: ['Playfair Display', 'serif'],
+              sans: ['Plus Jakarta Sans', 'sans-serif'],
+              mono: ['Courier New', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
 </head>
 
 
@@ -2927,10 +2950,10 @@ Everyday Wellness."
                 </div>
 
             <!-- ========================================================================= -->
-            <!-- ARCHITECTURAL RECTANGULAR HERO SHOWCASE BANNER (INTERACTIVE UI/UX SUITE) -->
-            <!-- Panoramic Studio Canvas &bull; Live Sensory Hotspots &bull; 3-Ritual Switcher -->
+            <!-- TAILWIND CSS EXPERT INTERACTIVE RECTANGULAR HERO SHOWCASE BANNER          -->
+            <!-- Wide Landscape Studio Canvas &bull; Live Sensory Hotspots &bull; Ritual Switcher -->
             <!-- ========================================================================= -->
-            <div class="my-8 sm:my-12 max-w-6xl mx-auto relative select-none"
+            <div class="my-8 sm:my-12 max-w-6xl mx-auto relative select-none px-2 sm:px-0"
                  x-data="{
                      activeTab: 'gummies',
                      activeHotspot: null,
@@ -2938,9 +2961,9 @@ Everyday Wellness."
                          gummies: {
                              subtitle: 'Pillar I &bull; Cellular Radiance &amp; Vitality',
                              title: 'The Bioactive Pectin Matrix',
-                             desc: 'Handcrafted plant pectin chews infused with Pure Himalayan Shilajit, Marine Collagen, and Biotin B7. 100% gelatin-free with zero cane sugar and clinical cellular bioavailability.',
+                             desc: 'Pure plant pectin chews cascading with Himalayan Shilajit, Marine Collagen, and Biotin B7. 100% gelatin-free with zero cane sugar and clinical cellular bioavailability.',
                              badges: ['100% Citrus Pectin', 'Zero Gelatin', 'Clinically Standardized'],
-                             ctaText: 'Experience Gummy Ritual',
+                             ctaText: 'Add to Bag &bull; $28',
                              productId: 1
                          },
                          honey: {
@@ -2948,7 +2971,7 @@ Everyday Wellness."
                              title: 'Cold-Infused Ayurvedic Honey',
                              desc: 'Single-origin unpasteurized raw forest honey infused at ambient Himalayan temperatures with Kashmiri Saffron, Wild Turmeric, and Holy Basil Tulsi.',
                              badges: ['Cold-Infused &bull; Unheated', 'Single-Origin Reserve', 'Living Enzymes'],
-                             ctaText: 'Experience Honey Ritual',
+                             ctaText: 'Add to Bag &bull; $34',
                              productId: 13
                          },
                          bars: {
@@ -2956,7 +2979,7 @@ Everyday Wellness."
                              title: 'Clean Adaptogenic Protein',
                              desc: 'Raw sprouted seeds, sprouted almonds, and activated plant protein energized with organic Peruvian Maca, Hawaiian Spirulina, and spiced cardamom.',
                              badges: ['Activated Seeds', 'Zero Chalkiness', 'Organic Adaptogens'],
-                             ctaText: 'Experience Protein Ritual',
+                             ctaText: 'Add to Bag &bull; $22',
                              productId: 17
                          }
                      },
@@ -2965,59 +2988,59 @@ Everyday Wellness."
                      }
                  }">
                 
-                <!-- Rectangular Panoramic Canvas -->
-                <div class="relative rounded-3xl border border-[#566b5e]/25 bg-gradient-to-br from-white/90 via-[#f4f0e6]/95 to-[#eae4d8]/90 backdrop-blur-md shadow-xl overflow-hidden min-h-[480px] sm:min-h-[520px] lg:min-h-[540px] flex flex-col justify-between p-6 sm:p-10 lg:p-12">
+                <!-- Rectangular Panoramic Canvas with Landscape Banner Background -->
+                <div class="relative w-full rounded-3xl border border-[#566b5e]/25 shadow-2xl overflow-hidden min-h-[480px] sm:min-h-[520px] lg:min-h-[540px] flex flex-col justify-between p-6 sm:p-10 lg:p-12 bg-[#F2EFE5]"
+                     style="background-image: url('images/banners/cascading-gummies-landscape-banner.png'); background-size: cover; background-position: center right;">
                     
-                    <!-- Architectural Zen Corner Crosshairs (+) -->
-                    <span class="absolute top-3 left-3 text-[10px] font-mono text-[#566b5e]/40 select-none">+</span>
-                    <span class="absolute top-3 right-3 text-[10px] font-mono text-[#566b5e]/40 select-none">+</span>
-                    <span class="absolute bottom-3 left-3 text-[10px] font-mono text-[#566b5e]/40 select-none">+</span>
-                    <span class="absolute bottom-3 right-3 text-[10px] font-mono text-[#566b5e]/40 select-none">+</span>
+                    <!-- Left-To-Right Subtle Gradient Scrim to ensure crisp editorial contrast -->
+                    <div class="absolute inset-0 bg-gradient-to-r from-[#F2EFE5] via-[#F2EFE5]/95 sm:via-[#F2EFE5]/90 to-transparent pointer-events-none z-0"></div>
 
-                    <!-- Ambient Studio Warm Glow in Background -->
-                    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-amber-400/10 blur-3xl pointer-events-none"></div>
-                    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-[#566b5e]/10 blur-3xl pointer-events-none"></div>
+                    <!-- Architectural Corner Crosshairs (+) -->
+                    <span class="absolute top-3 left-3 text-[11px] font-mono text-[#566b5e]/50 select-none z-10">+</span>
+                    <span class="absolute top-3 right-3 text-[11px] font-mono text-[#566b5e]/50 select-none z-10">+</span>
+                    <span class="absolute bottom-3 left-3 text-[11px] font-mono text-[#566b5e]/50 select-none z-10">+</span>
+                    <span class="absolute bottom-3 right-3 text-[11px] font-mono text-[#566b5e]/50 select-none z-10">+</span>
 
                     <!-- Top Bar: Segmented Interactive Ritual Switcher Tabs -->
-                    <div class="relative z-20 flex flex-wrap items-center justify-between gap-3 pb-6 border-b border-[#566b5e]/15">
+                    <div class="relative z-20 flex flex-wrap items-center justify-between gap-3 pb-4 sm:pb-6 border-b border-[#566b5e]/15">
                         
                         <!-- Segmented Switcher Pills -->
-                        <div class="inline-flex p-1 rounded-full bg-white/80 border border-[#566b5e]/20 shadow-xs backdrop-blur-sm">
+                        <div class="inline-flex p-1 rounded-full bg-white/90 border border-[#566b5e]/20 shadow-xs backdrop-blur-md">
                             <button type="button"
                                     @click="activeTab = 'gummies'"
                                     :class="activeTab === 'gummies' ? 'bg-[#566b5e] text-[#eae4d8] shadow-sm font-bold' : 'text-[#566b5e] hover:text-[#0b2a2b] font-medium'"
-                                    class="px-3.5 sm:px-4 py-1.5 rounded-full text-xs transition-all duration-300 flex items-center gap-1.5 cursor-pointer">
+                                    class="px-3 sm:px-4 py-1.5 rounded-full text-xs transition-all duration-300 flex items-center gap-1.5 cursor-pointer">
                                 <span>🌿</span>
                                 <span>Cellular Gummies</span>
                             </button>
                             <button type="button"
                                     @click="activeTab = 'honey'"
                                     :class="activeTab === 'honey' ? 'bg-[#566b5e] text-[#eae4d8] shadow-sm font-bold' : 'text-[#566b5e] hover:text-[#0b2a2b] font-medium'"
-                                    class="px-3.5 sm:px-4 py-1.5 rounded-full text-xs transition-all duration-300 flex items-center gap-1.5 cursor-pointer">
+                                    class="px-3 sm:px-4 py-1.5 rounded-full text-xs transition-all duration-300 flex items-center gap-1.5 cursor-pointer">
                                 <span>🍯</span>
                                 <span>Raw Infused Honey</span>
                             </button>
                             <button type="button"
                                     @click="activeTab = 'bars'"
                                     :class="activeTab === 'bars' ? 'bg-[#566b5e] text-[#eae4d8] shadow-sm font-bold' : 'text-[#566b5e] hover:text-[#0b2a2b] font-medium'"
-                                    class="px-3.5 sm:px-4 py-1.5 rounded-full text-xs transition-all duration-300 flex items-center gap-1.5 cursor-pointer">
+                                    class="px-3 sm:px-4 py-1.5 rounded-full text-xs transition-all duration-300 flex items-center gap-1.5 cursor-pointer">
                                 <span>🍫</span>
                                 <span>Sprouted Protein</span>
                             </button>
                         </div>
 
                         <!-- Live Lab Verification Badge -->
-                        <div class="hidden sm:inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/60 border border-[#566b5e]/15 text-[11px] font-mono text-[#566b5e]">
+                        <div class="hidden md:inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/70 border border-[#566b5e]/15 text-[11px] font-mono text-[#566b5e] backdrop-blur-xs">
                             <span class="w-2 h-2 rounded-full bg-emerald-600 animate-pulse"></span>
                             <span>3 Ritual Pillars &bull; Third-Party Lab Certified</span>
                         </div>
                     </div>
 
-                    <!-- Main Rectangular Stage (Split 7 / 5 Layout) -->
-                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-6">
+                    <!-- Main Rectangular Stage (Split Layout) -->
+                    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-12 items-center my-auto py-4 sm:py-6">
                         
                         <!-- Left Content Column -->
-                        <div class="lg:col-span-7 text-left space-y-4">
+                        <div class="lg:col-span-7 text-left space-y-4 max-w-xl">
                             
                             <!-- Dynamic Subtitle -->
                             <div class="inline-flex items-center gap-2">
@@ -3026,143 +3049,133 @@ Everyday Wellness."
                             </div>
 
                             <!-- Dynamic Main Title -->
-                            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0b2a2b] font-serif-heading tracking-tight leading-[1.1] transition-all"
+                            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0b2a2b] font-serif-heading tracking-tight leading-[1.08] transition-all"
                                 x-text="currentRitual.title"></h2>
 
                             <!-- Dynamic Description -->
-                            <p class="text-xs sm:text-sm lg:text-[15px] text-[#566b5e]/90 font-medium leading-relaxed max-w-xl transition-all"
+                            <p class="text-xs sm:text-sm lg:text-[15px] text-[#566b5e]/90 font-medium leading-relaxed transition-all"
                                x-text="currentRitual.desc"></p>
 
                             <!-- Dynamic Sensory Badge Strip -->
                             <div class="flex flex-wrap items-center gap-2 pt-2">
                                 <template x-for="badge in currentRitual.badges" :key="badge">
-                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/80 border border-[#566b5e]/20 text-[11px] font-bold text-[#0b2a2b] shadow-2xs">
+                                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/85 border border-[#566b5e]/20 text-[11px] font-bold text-[#0b2a2b] shadow-2xs backdrop-blur-xs">
                                         <span class="text-emerald-700">✦</span>
                                         <span x-text="badge"></span>
                                     </span>
                                 </template>
                             </div>
 
-                            <!-- Interactive CTAs -->
-                            <div class="pt-4 flex flex-wrap items-center gap-4">
+                            <!-- Interactive Action Row -->
+                            <div class="pt-4 flex flex-wrap items-center gap-3 sm:gap-4">
                                 <button type="button"
-                                        @click="openQuickView(getProductById(currentRitual.productId))"
+                                        @click="addToCart(getProductById(currentRitual.productId))"
                                         class="artisan-btn-primary px-8 py-3.5 rounded-full bg-[#566b5e] hover:bg-[#0b2a2b] text-[#eae4d8] font-bold text-xs uppercase tracking-widest shadow-md transition-all duration-300 hover:scale-105 inline-flex items-center gap-2 cursor-pointer">
                                     <span x-text="currentRitual.ctaText"></span>
                                     <svg class="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                                 </button>
 
-                                <a href="#three-pillars-showcase" 
-                                   class="px-6 py-3.5 rounded-full border border-[#566b5e]/30 text-[#0b2a2b] hover:bg-white text-xs font-bold uppercase tracking-wider transition-all duration-300">
-                                    Browse All Formulations ↓
-                                </a>
+                                <button type="button"
+                                        @click="openQuickView(getProductById(currentRitual.productId))"
+                                        class="px-5 py-3.5 rounded-full border border-[#566b5e]/30 bg-white/80 hover:bg-white text-[#0b2a2b] text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-2xs flex items-center gap-1.5 cursor-pointer">
+                                    <svg class="w-3.5 h-3.5 text-[#566b5e]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    <span>Quick View</span>
+                                </button>
                             </div>
 
                         </div>
 
-                        <!-- Right Column: Rectangular Visual Showcase with 3 Interactive Hotspot Pins -->
-                        <div class="lg:col-span-5 relative flex items-center justify-center">
+                        <!-- Right Column: Interactive Hotspots on the Pouring Gummies Canvas -->
+                        <div class="lg:col-span-5 relative min-h-[300px] sm:min-h-[380px] lg:min-h-[440px] flex items-center justify-center">
                             
-                            <!-- Visual Stage Frame -->
-                            <div class="relative w-full max-w-[340px] sm:max-w-[400px] flex items-center justify-center group/visual">
-                                
-                                <!-- Soft Radiant Aura Behind Bottle -->
-                                <div class="absolute inset-0 bg-radial from-amber-400/20 via-emerald-400/10 to-transparent rounded-full blur-2xl pointer-events-none group-hover/visual:scale-110 transition-transform duration-700"></div>
+                            <!-- -------------------------------------------------- -->
+                            <!-- INTERACTIVE SENSORY HOTSPOT 1: The Bottle Neck      -->
+                            <!-- -------------------------------------------------- -->
+                            <div class="absolute top-[8%] right-[32%] z-30"
+                                 @mouseenter="activeHotspot = 1"
+                                 @mouseleave="activeHotspot = null">
+                                <button type="button" 
+                                        @click="activeHotspot = activeHotspot === 1 ? null : 1"
+                                        class="w-7 h-7 rounded-full bg-white/95 text-[#0b2a2b] border border-[#566b5e]/40 shadow-lg flex items-center justify-center transition-transform hover:scale-125 focus:outline-none cursor-pointer">
+                                    <span class="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping"></span>
+                                    <span class="text-xs font-black relative z-10 text-emerald-800">✦</span>
+                                </button>
 
-                                <!-- Cascading Gummies Image Composed Horizontally -->
-                                <img src="images/banners/cascading-gummies-hero.png" 
-                                     alt="Cascading Pure Bioactive Gummies" 
-                                     class="w-full h-auto object-contain max-h-[440px] drop-shadow-2xl transition-transform duration-700 select-none group-hover/visual:scale-[1.03]" />
-
-                                <!-- -------------------------------------------------- -->
-                                <!-- INTERACTIVE SENSORY HOTSPOT 1: The Bottle Neck      -->
-                                <!-- -------------------------------------------------- -->
-                                <div class="absolute top-[8%] left-[28%] z-30"
-                                     @mouseenter="activeHotspot = 1"
-                                     @mouseleave="activeHotspot = null">
-                                    <button type="button" 
-                                            @click="activeHotspot = activeHotspot === 1 ? null : 1"
-                                            class="w-7 h-7 rounded-full bg-white/95 text-[#0b2a2b] border border-[#566b5e]/40 shadow-lg flex items-center justify-center transition-transform hover:scale-125 focus:outline-none cursor-pointer">
-                                        <span class="absolute inset-0 rounded-full bg-emerald-500/30 animate-ping"></span>
-                                        <span class="text-xs font-black relative z-10 text-emerald-800">✦</span>
-                                    </button>
-
-                                    <!-- Floating Tooltip Card -->
-                                    <div x-show="activeHotspot === 1"
-                                         x-transition:enter="transition ease-out duration-200"
-                                         x-transition:enter-start="opacity-0 translate-y-1 scale-95"
-                                         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                                         x-transition:leave="transition ease-in duration-150"
-                                         class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#566b5e]/25 shadow-xl text-left pointer-events-auto"
-                                         style="display: none;">
-                                        <p class="text-[10px] font-mono font-bold text-[#566b5e] uppercase">Apothecary Extraction</p>
-                                        <p class="text-[11px] font-bold text-[#0b2a2b] font-serif-heading mt-0.5">Cold Pour Bio-Lock</p>
-                                        <p class="text-[10px] text-[#566b5e]/80 mt-1 leading-tight font-sans">Active herbs micro-encapsulated at 22°C to preserve cellular potency.</p>
-                                    </div>
+                                <!-- Floating Tooltip Card -->
+                                <div x-show="activeHotspot === 1"
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="opacity-0 translate-y-1 scale-95"
+                                     x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                                     x-transition:leave="transition ease-in duration-150"
+                                     class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-48 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#566b5e]/25 shadow-xl text-left pointer-events-auto"
+                                     style="display: none;">
+                                    <p class="text-[10px] font-mono font-bold text-[#566b5e] uppercase">Apothecary Extraction</p>
+                                    <p class="text-[11px] font-bold text-[#0b2a2b] font-serif-heading mt-0.5">Cold Pour Bio-Lock</p>
+                                    <p class="text-[10px] text-[#566b5e]/80 mt-1 leading-tight font-sans">Active herbs micro-encapsulated at 22°C to preserve molecular stability.</p>
                                 </div>
-
-                                <!-- -------------------------------------------------- -->
-                                <!-- INTERACTIVE SENSORY HOTSPOT 2: Falling Mid-Air Chews-->
-                                <!-- -------------------------------------------------- -->
-                                <div class="absolute top-[48%] left-[62%] z-30"
-                                     @mouseenter="activeHotspot = 2"
-                                     @mouseleave="activeHotspot = null">
-                                    <button type="button" 
-                                            @click="activeHotspot = activeHotspot === 2 ? null : 2"
-                                            class="w-7 h-7 rounded-full bg-white/95 text-[#0b2a2b] border border-[#566b5e]/40 shadow-lg flex items-center justify-center transition-transform hover:scale-125 focus:outline-none cursor-pointer">
-                                        <span class="absolute inset-0 rounded-full bg-rose-500/30 animate-ping"></span>
-                                        <span class="text-xs font-black relative z-10 text-rose-700">✦</span>
-                                    </button>
-
-                                    <!-- Floating Tooltip Card -->
-                                    <div x-show="activeHotspot === 2"
-                                         x-transition:enter="transition ease-out duration-200"
-                                         x-transition:enter-start="opacity-0 translate-y-1 scale-95"
-                                         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                                         x-transition:leave="transition ease-in duration-150"
-                                         class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#566b5e]/25 shadow-xl text-left pointer-events-auto"
-                                         style="display: none;">
-                                        <p class="text-[10px] font-mono font-bold text-rose-700 uppercase">Purity Standard</p>
-                                        <p class="text-[11px] font-bold text-[#0b2a2b] font-serif-heading mt-0.5">100% Citrus &amp; Apple Pectin</p>
-                                        <p class="text-[10px] text-[#566b5e]/80 mt-1 leading-tight font-sans">Zero bovine or pork gelatin. Clean, silky plant-based chew with real fruit extracts.</p>
-                                    </div>
-                                </div>
-
-                                <!-- -------------------------------------------------- -->
-                                <!-- INTERACTIVE SENSORY HOTSPOT 3: The Base Chews Bed   -->
-                                <!-- -------------------------------------------------- -->
-                                <div class="absolute bottom-[10%] left-[38%] z-30"
-                                     @mouseenter="activeHotspot = 3"
-                                     @mouseleave="activeHotspot = null">
-                                    <button type="button" 
-                                            @click="activeHotspot = activeHotspot === 3 ? null : 3"
-                                            class="w-7 h-7 rounded-full bg-white/95 text-[#0b2a2b] border border-[#566b5e]/40 shadow-lg flex items-center justify-center transition-transform hover:scale-125 focus:outline-none cursor-pointer">
-                                        <span class="absolute inset-0 rounded-full bg-amber-500/30 animate-ping"></span>
-                                        <span class="text-xs font-black relative z-10 text-amber-800">✦</span>
-                                    </button>
-
-                                    <!-- Floating Tooltip Card -->
-                                    <div x-show="activeHotspot === 3"
-                                         x-transition:enter="transition ease-out duration-200"
-                                         x-transition:enter-start="opacity-0 translate-y-1 scale-95"
-                                         x-transition:enter-end="opacity-100 translate-y-0 scale-100"
-                                         x-transition:leave="transition ease-in duration-150"
-                                         class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#566b5e]/25 shadow-xl text-left pointer-events-auto"
-                                         style="display: none;">
-                                        <p class="text-[10px] font-mono font-bold text-amber-800 uppercase">Targeted Potency</p>
-                                        <p class="text-[11px] font-bold text-[#0b2a2b] font-serif-heading mt-0.5">Daily Cellular Radiance</p>
-                                        <p class="text-[10px] text-[#566b5e]/80 mt-1 leading-tight font-sans">High-potency Biotin B7, Marine Collagen &amp; pure Himalayan Shilajit.</p>
-                                    </div>
-                                </div>
-
                             </div>
+
+                            <!-- -------------------------------------------------- -->
+                            <!-- INTERACTIVE SENSORY HOTSPOT 2: Cascading Mid-Air Chews -->
+                            <!-- -------------------------------------------------- -->
+                            <div class="absolute top-[48%] right-[18%] z-30"
+                                 @mouseenter="activeHotspot = 2"
+                                 @mouseleave="activeHotspot = null">
+                                <button type="button" 
+                                        @click="activeHotspot = activeHotspot === 2 ? null : 2"
+                                        class="w-7 h-7 rounded-full bg-white/95 text-[#0b2a2b] border border-[#566b5e]/40 shadow-lg flex items-center justify-center transition-transform hover:scale-125 focus:outline-none cursor-pointer">
+                                    <span class="absolute inset-0 rounded-full bg-rose-500/30 animate-ping"></span>
+                                    <span class="text-xs font-black relative z-10 text-rose-700">✦</span>
+                                </button>
+
+                                <!-- Floating Tooltip Card -->
+                                <div x-show="activeHotspot === 2"
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="opacity-0 translate-y-1 scale-95"
+                                     x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                                     x-transition:leave="transition ease-in duration-150"
+                                     class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#566b5e]/25 shadow-xl text-left pointer-events-auto"
+                                     style="display: none;">
+                                    <p class="text-[10px] font-mono font-bold text-rose-700 uppercase">Purity Standard</p>
+                                    <p class="text-[11px] font-bold text-[#0b2a2b] font-serif-heading mt-0.5">100% Citrus &amp; Apple Pectin</p>
+                                    <p class="text-[10px] text-[#566b5e]/80 mt-1 leading-tight font-sans">Zero bovine or pork gelatin. Clean, silky plant-based chew with real fruit extracts.</p>
+                                </div>
+                            </div>
+
+                            <!-- -------------------------------------------------- -->
+                            <!-- INTERACTIVE SENSORY HOTSPOT 3: The Base Chews Bed   -->
+                            <!-- -------------------------------------------------- -->
+                            <div class="absolute bottom-[10%] right-[38%] z-30"
+                                 @mouseenter="activeHotspot = 3"
+                                 @mouseleave="activeHotspot = null">
+                                <button type="button" 
+                                        @click="activeHotspot = activeHotspot === 3 ? null : 3"
+                                        class="w-7 h-7 rounded-full bg-white/95 text-[#0b2a2b] border border-[#566b5e]/40 shadow-lg flex items-center justify-center transition-transform hover:scale-125 focus:outline-none cursor-pointer">
+                                    <span class="absolute inset-0 rounded-full bg-amber-500/30 animate-ping"></span>
+                                    <span class="text-xs font-black relative z-10 text-amber-800">✦</span>
+                                </button>
+
+                                <!-- Floating Tooltip Card -->
+                                <div x-show="activeHotspot === 3"
+                                     x-transition:enter="transition ease-out duration-200"
+                                     x-transition:enter-start="opacity-0 translate-y-1 scale-95"
+                                     x-transition:enter-end="opacity-100 translate-y-0 scale-100"
+                                     x-transition:leave="transition ease-in duration-150"
+                                     class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 w-52 p-2.5 rounded-xl bg-white/95 backdrop-blur-md border border-[#566b5e]/25 shadow-xl text-left pointer-events-auto"
+                                     style="display: none;">
+                                    <p class="text-[10px] font-mono font-bold text-amber-800 uppercase">Targeted Potency</p>
+                                    <p class="text-[11px] font-bold text-[#0b2a2b] font-serif-heading mt-0.5">Daily Cellular Radiance</p>
+                                    <p class="text-[10px] text-[#566b5e]/80 mt-1 leading-tight font-sans">High-potency Biotin B7, Marine Collagen &amp; pure Himalayan Shilajit.</p>
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
 
                     <!-- Bottom Status Bar -->
                     <div class="relative z-20 pt-4 border-t border-[#566b5e]/15 flex flex-wrap items-center justify-between text-[11px] text-[#566b5e]">
-                        <div class="flex items-center gap-4">
+                        <div class="flex items-center gap-3 sm:gap-4">
                             <span class="font-bold text-[#0b2a2b]">✦ Conscious Ritual Assurance</span>
                             <span class="hidden sm:inline text-[#566b5e]/40">&bull;</span>
                             <span class="hidden sm:inline">Zero Artificial Colors</span>
