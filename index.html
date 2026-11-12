@@ -552,6 +552,8 @@
 
     </style>
 
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="images/artisan-logo.png">
 </head>
 
 <body class="bg-[#eae4d8] text-[#566b5e] antialiased selection:bg-[#566b5e] selection:text-[#eae4d8]"
@@ -983,19 +985,10 @@
         
         <div class="preloader-badge-wrap">
             <!-- Centered Circular Badge in Dynamic Custom Circle Color -->
-            <div class="preloader-circle-badge" style="--preloader-circle-bg: #566b5e;">
-                <div class="preloader-spinner-ring" aria-hidden="true"></div>
-                
-                                    <div class="preloader-badge-logo-mask" 
-                         role="img" 
-                         aria-label="ARTISANPARK"
-                         style="--preloader-logo-color: #FFFFFF;"></div>
-                                
-                <div id="preloader-brand-text-fallback" style="display: none;">
-                    <span style="font-family: 'Playfair Display', Georgia, serif; font-size: 1.35rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #FFFFFF;">
-                        ARTISANPARK
-                    </span>
-                </div>
+            <div class="preloader-circle-badge" style="--preloader-circle-bg: #4a6152; border-color: rgba(235, 219, 194, 0.4);">
+                <img src="images/artisan-logo.png"
+                     alt="The Artisan Park"
+                     class="w-20 h-20 sm:w-24 sm:h-24 object-contain drop-shadow-md">
             </div>
 
             <!-- Meta Typography & Minimal Loading Bar in Primary Color -->
@@ -1569,11 +1562,10 @@
             
             <!-- Dynamic Brand Logo Image: Centered in Middle of Notch & Circle -->
             <div class="notch-logo-wrap is-overlap-top"
-                                :class="isScrolled ? 'is-overlap-sticky' : 'is-overlap-top'"
-                >
-                                    <span class="notch-logo-img notch-logo-mask"
-                          role="img"
-                          aria-label="ARTISANPARK — WELLNESS &amp; BOTANICALS"></span>
+                                :class="isScrolled ? 'is-overlap-sticky' : 'is-overlap-top'">
+                                    <img src="images/artisan-logo.png"
+                                         alt="ArtisanPark — Purpose Beyond Product"
+                                         class="notch-logo-img">
                             </div>
         </a>
     </div>
@@ -1794,19 +1786,61 @@
         display: flex;
         width: -webkit-max-content;
         width: max-content;
-        -webkit-animation: watermarkInfiniteGlide 22s linear infinite !important;
-        animation: watermarkInfiniteGlide 22s linear infinite !important;
+        -webkit-animation: watermarkInfiniteGlide 78s linear infinite !important;
+        animation: watermarkInfiniteGlide 78s linear infinite !important;
         will-change: transform;
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         pointer-events: none;
+        contain: layout paint;
     }
-    /* Only pause hover on desktop mouse devices, never pause on mobile touch */
+    @media (max-width: 768px) {
+        .watermark-hover-track {
+            -webkit-animation: watermarkInfiniteGlide 48s linear infinite !important;
+            animation: watermarkInfiniteGlide 48s linear infinite !important;
+        }
+    }
     @media (hover: hover) and (pointer: fine) {
         .watermark-hover-float:hover .watermark-hover-track {
             -webkit-animation-play-state: paused;
             animation-play-state: paused;
         }
+    }
+    .watermark-text-primary {
+        font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        color: #566b5e;
+        text-transform: uppercase;
+        line-height: 1;
+        user-select: none;
+    }
+    .watermark-text-outline {
+        font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+        font-weight: 600;
+        font-style: italic;
+        letter-spacing: 0.12em;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgba(86, 107, 94, 0.45);
+        text-transform: uppercase;
+        line-height: 1;
+        user-select: none;
+    }
+    .watermark-star {
+        color: rgba(86, 107, 94, 0.35);
+        user-select: none;
+        align-self: center;
+        line-height: 1;
+    }
+    .watermark-tagline {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        color: #566b5e;
+        opacity: 0.75;
+        text-transform: uppercase;
+        line-height: 1;
+        user-select: none;
     }
 </style>
 
@@ -1853,51 +1887,35 @@
 
                 <!-- DESKTOP WATERMARK: Centered across entire 12-column desktop banner -->
                 <div class="hidden lg:flex absolute inset-0 items-center pointer-events-none select-none overflow-hidden" 
-                     style="opacity: 0.06; z-index: 0;">
+                     style="opacity: 0.085; z-index: 0; -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, black 12%, black 88%, transparent 100%);">
                     <div class="watermark-hover-float w-full pointer-events-none">
                         <div class="watermark-hover-track flex items-center whitespace-nowrap">
                             <!-- Seamless Track Part 1 -->
                             <div class="flex items-center shrink-0">
-                                                                    <span class="font-black tracking-widest text-[#566b5e] uppercase px-16 leading-none select-none"
-                                          style="font-size: 400px;">
-                                        ARTISAN PARK
-                                    </span>
-                                    <span class="text-[#566b5e]/35 px-6 select-none self-center"
-                                          style="font-size: 112px;">✦</span>
-                                                                    <span class="font-black tracking-widest text-[#566b5e] uppercase px-16 leading-none select-none"
-                                          style="font-size: 400px;">
-                                        ARTISAN PARK
-                                    </span>
-                                    <span class="text-[#566b5e]/35 px-6 select-none self-center"
-                                          style="font-size: 112px;">✦</span>
-                                                                    <span class="font-black tracking-widest text-[#566b5e] uppercase px-16 leading-none select-none"
-                                          style="font-size: 400px;">
-                                        ARTISAN PARK
-                                    </span>
-                                    <span class="text-[#566b5e]/35 px-6 select-none self-center"
-                                          style="font-size: 112px;">✦</span>
-                                                            </div>
+                                <span class="watermark-text-primary px-12" style="font-size: clamp(140px, 15vw, 210px);">ARTISAN PARK</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-text-outline px-12" style="font-size: clamp(120px, 13vw, 190px);">PURPOSE BEYOND PRODUCT</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-text-primary px-12" style="font-size: clamp(140px, 15vw, 210px);">MIND &amp; BOTANICALS</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-text-outline px-12" style="font-size: clamp(120px, 13vw, 190px);">ARTISAN PARK</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-tagline px-10" style="font-size: 32px;">BIO-ACTIVE WELLNESS SANCTUARY</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                            </div>
                             <!-- Seamless Track Part 2 (Exact Clone for Infinite Seamless Loop) -->
                             <div class="flex items-center shrink-0">
-                                                                    <span class="font-black tracking-widest text-[#566b5e] uppercase px-16 leading-none select-none"
-                                          style="font-size: 400px;">
-                                        ARTISAN PARK
-                                    </span>
-                                    <span class="text-[#566b5e]/35 px-6 select-none self-center"
-                                          style="font-size: 112px;">✦</span>
-                                                                    <span class="font-black tracking-widest text-[#566b5e] uppercase px-16 leading-none select-none"
-                                          style="font-size: 400px;">
-                                        ARTISAN PARK
-                                    </span>
-                                    <span class="text-[#566b5e]/35 px-6 select-none self-center"
-                                          style="font-size: 112px;">✦</span>
-                                                                    <span class="font-black tracking-widest text-[#566b5e] uppercase px-16 leading-none select-none"
-                                          style="font-size: 400px;">
-                                        ARTISAN PARK
-                                    </span>
-                                    <span class="text-[#566b5e]/35 px-6 select-none self-center"
-                                          style="font-size: 112px;">✦</span>
-                                                            </div>
+                                <span class="watermark-text-primary px-12" style="font-size: clamp(140px, 15vw, 210px);">ARTISAN PARK</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-text-outline px-12" style="font-size: clamp(120px, 13vw, 190px);">PURPOSE BEYOND PRODUCT</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-text-primary px-12" style="font-size: clamp(140px, 15vw, 210px);">MIND &amp; BOTANICALS</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-text-outline px-12" style="font-size: clamp(120px, 13vw, 190px);">ARTISAN PARK</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                                <span class="watermark-tagline px-10" style="font-size: 32px;">BIO-ACTIVE WELLNESS SANCTUARY</span>
+                                <span class="watermark-star px-6" style="font-size: 70px;">✦</span>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1942,51 +1960,27 @@ Everyday Wellness.
                         <div class="block lg:hidden relative w-full max-w-[260px] sm:max-w-[320px] mx-auto my-2 flex items-center justify-center">
                             <!-- MOBILE WATERMARK: Centered in the EXACT vertical & horizontal middle of mobile view, directly behind the gummies -->
                             <div class="absolute w-screen left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 flex items-center pointer-events-none select-none overflow-hidden" 
-                                 style="opacity: 0.08; z-index: 0;">
+                                 style="opacity: 0.09; z-index: 0; -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%); mask-image: linear-gradient(90deg, transparent 0%, black 10%, black 90%, transparent 100%);">
                                 <div class="watermark-hover-float w-full pointer-events-none">
                                     <div class="watermark-hover-track flex items-center whitespace-nowrap">
                                         <!-- Mobile Track Part 1 -->
                                         <div class="flex items-center shrink-0">
-                                                                                            <span class="font-black tracking-widest text-[#566b5e] uppercase px-4 sm:px-8 leading-none select-none"
-                                                      style="font-size: 80px;">
-                                                    ARTISAN PARK
-                                                </span>
-                                                <span class="text-[#566b5e]/35 px-2 sm:px-4 select-none self-center"
-                                                      style="font-size: 22px;">✦</span>
-                                                                                            <span class="font-black tracking-widest text-[#566b5e] uppercase px-4 sm:px-8 leading-none select-none"
-                                                      style="font-size: 80px;">
-                                                    ARTISAN PARK
-                                                </span>
-                                                <span class="text-[#566b5e]/35 px-2 sm:px-4 select-none self-center"
-                                                      style="font-size: 22px;">✦</span>
-                                                                                            <span class="font-black tracking-widest text-[#566b5e] uppercase px-4 sm:px-8 leading-none select-none"
-                                                      style="font-size: 80px;">
-                                                    ARTISAN PARK
-                                                </span>
-                                                <span class="text-[#566b5e]/35 px-2 sm:px-4 select-none self-center"
-                                                      style="font-size: 22px;">✦</span>
-                                                                                    </div>
-                                        <!-- Mobile Track Part 2 (Exact Clone for Infinite Seamless Loop) -->
+                                            <span class="watermark-text-primary px-4 sm:px-6" style="font-size: 58px;">ARTISAN PARK</span>
+                                            <span class="watermark-star px-2 sm:px-3" style="font-size: 22px;">✦</span>
+                                            <span class="watermark-text-outline px-4 sm:px-6" style="font-size: 52px;">PURPOSE BEYOND PRODUCT</span>
+                                            <span class="watermark-star px-2 sm:px-3" style="font-size: 22px;">✦</span>
+                                            <span class="watermark-text-primary px-4 sm:px-6" style="font-size: 58px;">BOTANICALS</span>
+                                            <span class="watermark-star px-2 sm:px-3" style="font-size: 22px;">✦</span>
+                                        </div>
+                                        <!-- Mobile Track Part 2 (Clone) -->
                                         <div class="flex items-center shrink-0">
-                                                                                            <span class="font-black tracking-widest text-[#566b5e] uppercase px-4 sm:px-8 leading-none select-none"
-                                                      style="font-size: 80px;">
-                                                    ARTISAN PARK
-                                                </span>
-                                                <span class="text-[#566b5e]/35 px-2 sm:px-4 select-none self-center"
-                                                      style="font-size: 22px;">✦</span>
-                                                                                            <span class="font-black tracking-widest text-[#566b5e] uppercase px-4 sm:px-8 leading-none select-none"
-                                                      style="font-size: 80px;">
-                                                    ARTISAN PARK
-                                                </span>
-                                                <span class="text-[#566b5e]/35 px-2 sm:px-4 select-none self-center"
-                                                      style="font-size: 22px;">✦</span>
-                                                                                            <span class="font-black tracking-widest text-[#566b5e] uppercase px-4 sm:px-8 leading-none select-none"
-                                                      style="font-size: 80px;">
-                                                    ARTISAN PARK
-                                                </span>
-                                                <span class="text-[#566b5e]/35 px-2 sm:px-4 select-none self-center"
-                                                      style="font-size: 22px;">✦</span>
-                                                                                    </div>
+                                            <span class="watermark-text-primary px-4 sm:px-6" style="font-size: 58px;">ARTISAN PARK</span>
+                                            <span class="watermark-star px-2 sm:px-3" style="font-size: 22px;">✦</span>
+                                            <span class="watermark-text-outline px-4 sm:px-6" style="font-size: 52px;">PURPOSE BEYOND PRODUCT</span>
+                                            <span class="watermark-star px-2 sm:px-3" style="font-size: 22px;">✦</span>
+                                            <span class="watermark-text-primary px-4 sm:px-6" style="font-size: 58px;">BOTANICALS</span>
+                                            <span class="watermark-star px-2 sm:px-3" style="font-size: 22px;">✦</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -5197,7 +5191,13 @@ Everyday Wellness."
             <!-- Column 1: Brand Info -->
             <div class="space-y-4">
                 <div class="flex items-center gap-2">
-                    <img src="images/logo-sand.png" alt="ArtisanPark — Purpose Beyond Product" class="h-7 w-auto object-contain">
+                    <div class="flex items-center gap-3">
+                    <img src="images/artisan-logo.png" alt="ArtisanPark — Purpose Beyond Product" class="h-12 w-12 object-contain rounded-full shadow-sm">
+                    <div class="flex flex-col">
+                        <span class="font-serif-heading text-lg font-bold tracking-widest text-[#eae4d8] uppercase">ARTISANPARK</span>
+                        <span class="text-[9px] tracking-[0.25em] text-[#eae4d8]/70 uppercase font-semibold">Purpose Beyond Product</span>
+                    </div>
+                </div>
                 </div>
                 <p class="text-xs text-[#eae4d8]/75 leading-relaxed">
                     Dedicated to mindful living, pure botanical wellness gummies, and everyday clean nutrition. Rooted in plant pectin, natural vitality, and conscious wellbeing.

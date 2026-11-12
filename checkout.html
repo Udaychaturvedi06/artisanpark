@@ -552,6 +552,8 @@
 
     </style>
 
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="images/artisan-logo.png">
 </head>
 
 <body class="bg-[#eae4d8] text-[#566b5e] antialiased selection:bg-[#566b5e] selection:text-[#eae4d8]"
@@ -1183,11 +1185,10 @@
             
             <!-- Dynamic Brand Logo Image: Centered in Middle of Notch & Circle -->
             <div class="notch-logo-wrap is-overlap-top"
-                                :class="isScrolled ? 'is-overlap-sticky' : 'is-overlap-top'"
-                >
-                                    <span class="notch-logo-img notch-logo-mask"
-                          role="img"
-                          aria-label="ARTISANPARK — WELLNESS &amp; BOTANICALS"></span>
+                                :class="isScrolled ? 'is-overlap-sticky' : 'is-overlap-top'">
+                                    <img src="images/artisan-logo.png"
+                                         alt="ArtisanPark — Purpose Beyond Product"
+                                         class="notch-logo-img">
                             </div>
         </a>
     </div>
@@ -1933,7 +1934,13 @@
             <!-- Column 1: Brand Info -->
             <div class="space-y-4">
                 <div class="flex items-center gap-2">
-                    <img src="images/logo-sand.png" alt="ArtisanPark — Purpose Beyond Product" class="h-7 w-auto object-contain">
+                    <div class="flex items-center gap-3">
+                    <img src="images/artisan-logo.png" alt="ArtisanPark — Purpose Beyond Product" class="h-12 w-12 object-contain rounded-full shadow-sm">
+                    <div class="flex flex-col">
+                        <span class="font-serif-heading text-lg font-bold tracking-widest text-[#eae4d8] uppercase">ARTISANPARK</span>
+                        <span class="text-[9px] tracking-[0.25em] text-[#eae4d8]/70 uppercase font-semibold">Purpose Beyond Product</span>
+                    </div>
+                </div>
                 </div>
                 <p class="text-xs text-[#eae4d8]/75 leading-relaxed">
                     Dedicated to mindful living, pure botanical wellness gummies, and everyday clean nutrition. Rooted in plant pectin, natural vitality, and conscious wellbeing.
