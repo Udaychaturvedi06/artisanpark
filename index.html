@@ -1181,298 +1181,241 @@
 
 </head>
 
-<body x-init="initExperience()"  class="bg-[#eae4d8] text-[#566b5e] antialiased selection:bg-[#566b5e] selection:text-[#eae4d8]"
-
-      @open-cart.window="cartDrawerOpen = true"
-
-      x-data="{
-
-          mobileMenuOpen: false,
-
-          /* --- Timed Newsletter VIP Modal State (10s delay & persistence) --- */
-          newsletterModalOpen: false,
-          newsletterEmail: '',
-          newsletterSubscribed: false,
-          closeNewsletter() {
-              this.newsletterModalOpen = false;
-              try { localStorage.setItem('artisan_newsletter_dismissed', 'true'); } catch(e) {}
-          },
-          submitNewsletter() {
-              if (!this.newsletterEmail || !this.newsletterEmail.includes('@')) {
-                  this.triggerToast('Please enter a valid email address');
-                  return;
-              }
-              this.newsletterSubscribed = true;
-              try { localStorage.setItem('artisan_newsletter_dismissed', 'true'); } catch(e) {}
-              this.triggerToast('Welcome to the Sanctuary! 15% discount code WELCOME15 unlocked 🌿');
-              setTimeout(() => { this.newsletterModalOpen = false; }, 2000);
-          },
-
-          /* --- Live Sales Social Proof Toast (Bottom Right) --- */
-          salesToastOpen: false,
-          salesToastPaused: false,
-          salesIndex: 0,
-          salesPurchases: [
-              { id: 1, city: "New York, US", time: "45 minutes ago", product: "Biotin B7 Hair, Skin & Nails Gummies", image: "images/products/biotin-gummies.png" },
-              { id: 13, city: "London, UK", time: "12 minutes ago", product: "Kashmiri Saffron & Ashwagandha Raw Honey", image: "images/products/saffron-ashwagandha-honey.png" },
-              { id: 17, city: "San Francisco, US", time: "6 minutes ago", product: "Raw Cacao Almond & Maca Energy Bar", image: "images/products/cacao-maca-protein-bar.png" },
-              { id: 3, city: "Mumbai, IN", time: "2 minutes ago", product: "Pure Himalayan Shilajit Gummies", image: "images/products/shilajit-gummies.png" },
-              { id: 4, city: "Sydney, AU", time: "18 minutes ago", product: "Deep Rest Melatonin Sleep Gummies", image: "images/products/sleep-gummies.png" },
-              { id: 14, city: "Paris, FR", time: "31 minutes ago", product: "Himalayan Ginger & Wild Turmeric Honey", image: "images/products/ginger-turmeric-honey.png" },
-              { id: 2, city: "Toronto, CA", time: "8 minutes ago", product: "Glutathione Glow & Radiance Gummies", image: "images/products/glutathione-gummies.png" },
-              { id: 18, city: "Berlin, DE", time: "22 minutes ago", product: "Pistachio Spirulina Clean Recovery Bar", image: "images/products/pistachio-spirulina-bar.png" }
-          ],
-          get currentSale() {
-              return this.salesPurchases[this.salesIndex % this.salesPurchases.length];
-          },
-          closeSalesToast() {
-              this.salesToastOpen = false;
-              this.salesToastPaused = true;
-              setTimeout(() => { this.salesToastPaused = false; }, 45000);
-          },
-          getProductById(id) {
-              const cat = [{"id": 1, "name": "Biotin B7 Hair, Skin & Nails Gummies", "category": "gummies", "price": 28, "regularPrice": 34.0, "badge": "Bestseller", "ritual": "\u2600\ufe0f Solar Morning Vitality", "notes": "Wild Crisp Strawberry & Bioactive Zinc", "image": "images/products/biotin-gummies.png", "description": "High-potency Biotin B7 infused with Zinc, Vitamin C & E for radiant skin glow, keratin synthesis, and hair strength.", "swatches": [{"label": "30 Gummies", "price": 28}, {"label": "60 Gummies", "price": 48}]}, {"id": 2, "name": "Glutathione Glow & Radiance Gummies", "category": "gummies", "price": 32, "regularPrice": 38.0, "badge": "Clinical Glow", "ritual": "\u2600\ufe0f Daily Cellular Rejuvenation", "notes": "Tangy Wild Cranberry & Vitamin C Synergy", "image": "images/products/glutathione-gummies.png", "description": "L-Glutathione master antioxidant blended with Vitamin C to neutralize oxidative stress and amplify inner dermis radiance.", "swatches": [{"label": "30 Gummies", "price": 32}, {"label": "60 Gummies", "price": 56}]}, {"id": 3, "name": "Pure Himalayan Shilajit Gummies", "category": "gummies", "price": 42, "regularPrice": 49.0, "badge": "Gold Grade Resin", "ritual": "\u2600\ufe0f Solar Prana & Stamina", "notes": "Smoked Tamarind & 84+ Ionic Minerals", "image": "images/products/shilajit-gummies.png", "description": "Purified Grade-A Himalayan Shilajit with 75% Fulvic Acid for cellular mitochondrial energy, vitality, and hormonal balance.", "swatches": [{"label": "30 Gummies", "price": 42}, {"label": "60 Gummies", "price": 74}]}, {"id": 4, "name": "Deep Rest Melatonin Sleep Gummies", "category": "gummies", "price": 26, "regularPrice": 32.0, "badge": "Twilight Rest", "ritual": "\ud83c\udf19 Lunar Twilight Recovery", "notes": "Soothing Lavender, Chamomile & Dark Berry", "image": "images/products/sleep-gummies.png", "description": "Non-habit forming 5mg Melatonin paired with L-Theanine, Chamomile, and Passionflower for deep REM sleep restoration.", "swatches": [{"label": "30 Gummies", "price": 26}, {"label": "60 Gummies", "price": 44}]}, {"id": 5, "name": "Apple Cider Vinegar Detox Gummies", "category": "gummies", "price": 24, "regularPrice": 29.0, "badge": "With 'The Mother'", "ritual": "\u2600\ufe0f Pre-Meal Digestive Fire", "notes": "Crisp Orchard Apple & Pomegranate Extract", "image": "images/products/acv-gummies.png", "description": "Real unfiltered Apple Cider Vinegar with 'The Mother' and Vitamin B12 to optimize gut flora balance and metabolic rhythm.", "swatches": [{"label": "30 Gummies", "price": 24}, {"label": "60 Gummies", "price": 40}]}, {"id": 6, "name": "Marine Collagen Peptides Gummies", "category": "gummies", "price": 36, "regularPrice": 44.0, "badge": "Type I & III", "ritual": "\ud83c\udf3f Dermal Moisture & Joint Grace", "notes": "Lush Wild Blueberry & Hyaluronic Synergy", "image": "images/products/marine-collagen-gummies.png", "description": "Hydrolyzed bioactive marine collagen peptides to nourish dermal elasticity, joint flexibility, and nail resilience.", "swatches": [{"label": "30 Gummies", "price": 36}, {"label": "60 Gummies", "price": 62}]}, {"id": 7, "name": "Weight Management & Metabolism Gummies", "category": "gummies", "price": 28, "regularPrice": 34.0, "badge": "Metabolic Cleanse", "ritual": "\u2600\ufe0f Midday Thermogenic Flow", "notes": "Green Tea Matcha & Garcinia Zest", "image": "images/products/weight-loss-gummies.png", "description": "Potent Green Coffee, Garcinia Cambogia, and L-Carnitine formulation to assist healthy thermogenesis and appetite harmony.", "swatches": [{"label": "30 Gummies", "price": 28}, {"label": "60 Gummies", "price": 48}]}, {"id": 8, "name": "Hyaluronic Acid Hydration Gummies", "category": "gummies", "price": 30, "regularPrice": 36.0, "badge": "Deep Moisture", "ritual": "\ud83c\udf3f All-Day Cellular Hydration", "notes": "Subtle Lychee Water & Aloe Vera Nectar", "image": "images/products/hyaluronic-acid-gummies.png", "description": "Multi-molecular Hyaluronic Acid paired with Vitamin C to hydrate thirsty dermal layers from deep within.", "swatches": [{"label": "30 Gummies", "price": 30}, {"label": "60 Gummies", "price": 52}]}, {"id": 9, "name": "Daily Multivitamin Essentials Gummies", "category": "gummies", "price": 22, "regularPrice": 28.0, "badge": "Daily Balance", "ritual": "\u2600\ufe0f Solar Morning Foundation", "notes": "Sun-Ripened Valencia Orange", "image": "images/products/multivitamin-gummies.png", "description": "Complete spectrum of 14 essential vitamins and minerals including D3, Zinc, Iodine, and B-Complex for full-body synergy.", "swatches": [{"label": "30 Gummies", "price": 22}, {"label": "60 Gummies", "price": 38}]}, {"id": 10, "name": "PCOS / PCOD Hormonal Balance Gummies", "category": "gummies", "price": 34, "regularPrice": 40.0, "badge": "Endocrine Harmony", "ritual": "\ud83c\udf3f Cyclical Rhythm Balance", "notes": "Wild Raspberry & Shatavari Botanical", "image": "images/products/pcospcod-gummies.png", "description": "Clinical 40:1 Myo & D-Chiro Inositol ratio infused with Folate and Shatavari for cycle regularity and metabolic comfort.", "swatches": [{"label": "30 Gummies", "price": 34}, {"label": "60 Gummies", "price": 58}]}, {"id": 11, "name": "Vitality & Sexual Wellness Gummies", "category": "gummies", "price": 38, "regularPrice": 45.0, "badge": "Botanical Libido", "ritual": "\u2600\ufe0f Intimate Vigor & Energy", "notes": "Tart Cherry & Ashwagandha Root Extract", "image": "images/products/sexual-wellness-gummies.png", "description": "Adaptogenic Ashwagandha KSM-66, Maca root, Gokshura, and Fenugreek extract to elevate stamina, mood, and circulation.", "swatches": [{"label": "30 Gummies", "price": 38}, {"label": "60 Gummies", "price": 66}]}, {"id": 12, "name": "Bioactive Whey Protein Gummies", "category": "gummies", "price": 28, "regularPrice": 34.0, "badge": "BCAA Infused", "ritual": "\ud83c\udf3f Post-Practice Muscle Fuel", "notes": "Sweet Mango Pulp & Isolate Protein", "image": "images/products/whey-protein-gummies.png", "description": "Micro-filtered whey isolate protein in a chewy pectin gummy delivery. Convenient BCAA replenishment on the go.", "swatches": [{"label": "30 Gummies", "price": 28}, {"label": "60 Gummies", "price": 48}]}, {"id": 13, "name": "Kashmiri Saffron & Ashwagandha Raw Honey", "category": "honey", "price": 32, "regularPrice": 38.0, "badge": "Single Origin", "ritual": "\u2600\ufe0f Solar AM Vitality Elixir", "notes": "Golden Amber Nectar & Red Saffron Threads", "image": "images/products/saffron-ashwagandha-honey.png", "description": "Unheated Himalayan forest raw honey infused with pure Grade-1 Mongra Kashmiri Saffron and adaptogenic Ashwagandha root for cognitive calm and vitality.", "swatches": [{"label": "250g Glass Jar", "price": 32}, {"label": "500g Glass Jar", "price": 54}]}, {"id": 14, "name": "Himalayan Ginger & Wild Turmeric Honey", "category": "honey", "price": 28, "regularPrice": 34.0, "badge": "Cold Infused", "ritual": "\ud83c\udf3f Respiratory & Digestive Radiance", "notes": "Piquant Spiced Warmth & Wild Blossom", "image": "images/products/ginger-turmeric-honey.png", "description": "Raw multi-floral wild honey cold-infused with high-curcumin Lakadong turmeric and sun-dried ginger root. Natural immune defense.", "swatches": [{"label": "250g Glass Jar", "price": 28}, {"label": "500g Glass Jar", "price": 48}]}, {"id": 15, "name": "Holy Basil Tulsi & Moringa Forest Nectar", "category": "honey", "price": 26, "regularPrice": 32.0, "badge": "Sacred Flora", "ritual": "\ud83e\uddd8 Meditative Inner Stillness", "notes": "Aromatic Herbal Meadow & Sacred Floral Finish", "image": "images/products/tulsi-moringa-honey.png", "description": "Sacred Krishna Tulsi and nutrient-dense organic Moringa leaves slowly steeped into raw unprocessed forest honey. Balances cortisol naturally.", "swatches": [{"label": "250g Glass Jar", "price": 26}, {"label": "500g Glass Jar", "price": 46}]}, {"id": 16, "name": "Wildflower Raw Honey Comb Reserve", "category": "honey", "price": 34, "regularPrice": 40.0, "badge": "Virgin Comb", "ritual": "\ud83c\udf19 Evening Twilight Restoration", "notes": "Unfiltered Hexagonal Comb & Royal Jelly", "image": "images/products/saffron-ashwagandha-honey.png", "description": "Pure 100% hand-cut raw virgin honeycomb straight from high-altitude alpine wildflowers. Rich in natural bee pollen, propolis, and living enzymes.", "swatches": [{"label": "300g Raw Cut Comb", "price": 34}, {"label": "600g Jar", "price": 58}]}, {"id": 17, "name": "Raw Cacao Almond & Maca Energy Bar", "category": "bars", "price": 24, "regularPrice": 28.0, "badge": "16g Clean Protein", "ritual": "\u2600\ufe0f Solar Morning Prana & Endurance", "notes": "Velvety Dark Cacao & Sprouted Almond Crunch", "image": "images/products/cacao-maca-protein-bar.png", "description": "Cold-pressed Ecuadorian raw cacao nibs, sprouted organic almonds, and Peruvian yellow maca. Zero refined sugar, 100% plant-derived vitality.", "swatches": [{"label": "6-Pack Box", "price": 24}, {"label": "12-Pack Box", "price": 42}]}, {"id": 18, "name": "Pistachio Spirulina Clean Recovery Bar", "category": "bars", "price": 26, "regularPrice": 30.0, "badge": "18g Clean Protein", "ritual": "\ud83c\udf3f Post-Practice Cellular Repair", "notes": "Wild Iranian Pistachio & Alkalizing Spirulina", "image": "images/products/pistachio-spirulina-bar.png", "description": "Alkalizing spirulina superfood infused with crushed raw pistachios and sprouted brown rice protein for instantaneous amino acid delivery.", "swatches": [{"label": "6-Pack Box", "price": 26}, {"label": "12-Pack Box", "price": 46}]}, {"id": 19, "name": "Wild Fig & Spiced Cardamom Adaptogen Bar", "category": "bars", "price": 24, "regularPrice": 28.0, "badge": "14g Clean Protein", "ritual": "\ud83c\udf19 Twilight Nourishment & Satiety", "notes": "Chewy Anatolian Fig & Fresh Green Cardamom", "image": "images/products/spiced-fig-protein-bar.png", "description": "Sun-dried Anatolian black figs, fragrant crushed green cardamom, chia seeds, and prebiotic root fiber for calming sustained nourishment.", "swatches": [{"label": "6-Pack Box", "price": 24}, {"label": "12-Pack Box", "price": 42}]}, {"id": 20, "name": "Golden Turmeric Coconut Crunch Bar", "category": "bars", "price": 22, "regularPrice": 26.0, "badge": "Anti-Inflammatory", "ritual": "\ud83e\uddd8 All-Day Holistic Anti-Inflammatory", "notes": "Toasted Coconut Flakes & Golden Curcumin", "image": "images/products/cacao-maca-protein-bar.png", "description": "Slow-toasted coconut shreds, cold-pressed golden turmeric curcumin, black pepper piperine, and sprouted pumpkin seeds for holistic ease.", "swatches": [{"label": "6-Pack Box", "price": 22}, {"label": "12-Pack Box", "price": 38}]}];
-              return cat.find(p => p.id === id) || cat[0];
-          },
-          initExperience() {
-              /* 10-second timer for VIP Newsletter Modal */
-              try {
-                  if (!localStorage.getItem('artisan_newsletter_dismissed')) {
-                      setTimeout(() => {
-                          if (!localStorage.getItem('artisan_newsletter_dismissed')) {
-                              this.newsletterModalOpen = true;
-                          }
-                      }, 10000);
-                  }
-              } catch(e) {}
-
-              /* Frequently appearing bottom-right sales notification loop */
-              setTimeout(() => {
-                  this.runSalesLoop();
-              }, 3500);
-          },
-          runSalesLoop() {
-              if (!this.salesToastPaused) {
-                  this.salesToastOpen = true;
-                  setTimeout(() => {
-                      if (!this.salesToastPaused) {
-                          this.salesToastOpen = false;
-                          this.salesIndex = (this.salesIndex + 1) % this.salesPurchases.length;
-                      }
-                      setTimeout(() => { this.runSalesLoop(); }, 9000);
-                  }, 6000);
-              } else {
-                  setTimeout(() => { this.runSalesLoop(); }, 10000);
-              }
-          },
-
-
-          cartDrawerOpen: false,
 
-          activePillar: 'all',
-
-          wishlist: (function() {
-              try {
-                  const saved = JSON.parse(localStorage.getItem('artisan_wishlist') || '[]');
-                  if (Array.isArray(saved)) return saved;
-              } catch(e) {}
-              return [];
-          })(),
-
-          toggleWishlist(prod) {
-              const idx = this.wishlist.indexOf(prod.id);
-              if (idx > -1) {
-                  this.wishlist.splice(idx, 1);
-                  this.triggerToast('Removed from your Mindful Wishlist');
-              } else {
-                  this.wishlist.push(prod.id);
-                  this.triggerToast('Saved to your Mindful Wishlist 🌿');
-              }
-              try { localStorage.setItem('artisan_wishlist', JSON.stringify(this.wishlist)); } catch(e) {}
-          },
-
-          isWishlisted(id) {
-              return this.wishlist.includes(id);
-          },
-
-          selectedSwatches: {},
-
-          getSwatchPrice(prod) {
-              const selected = this.selectedSwatches[prod.id];
-              if (selected && selected.price) return selected.price;
-              return prod.price;
-          },
-
-          setSwatch(prodId, swatch) {
-              this.selectedSwatches[prodId] = swatch;
-          },
-
-
-          quickViewOpen: false,
-
-          quickViewProduct: null,
-
-          currency: (function() {
-
-              try {
-
-                  const saved = localStorage.getItem('artisan_currency');
-
-                  if (saved && (saved === 'INR' || saved === 'USD')) return saved;
-
-              } catch (e) {}
-
-              return 'USD';
-
-          })(),
-
-          exchangeRate: 85,
-
-          formatPrice(amountInUSD) {
-
-              if (amountInUSD === null || amountInUSD === undefined || isNaN(amountInUSD)) return '';
-
-              const num = parseFloat(amountInUSD);
-
-              if (this.currency === 'INR') {
-
-                  return '₹' + Math.round(num * this.exchangeRate).toLocaleString('en-IN');
-
-              }
-
-              return '$' + num.toFixed(2);
-
-          },
-
-          toggleCurrency() {
-
-              this.currency = this.currency === 'USD' ? 'INR' : 'USD';
-
-              try { localStorage.setItem('artisan_currency', this.currency); } catch (e) {}
-
-              this.triggerToast('Currency updated: ' + (this.currency === 'INR' ? '₹ INR (Indian Rupee)' : '$ USD (US Dollar)'));
-
-              window.dispatchEvent(new CustomEvent('currency-changed', { detail: { currency: this.currency } }));
-
-          },
-
-          setCurrency(curr) {
-
-              this.currency = curr;
-
-              try { localStorage.setItem('artisan_currency', this.currency); } catch (e) {}
-
-              this.triggerToast('Currency updated: ' + (this.currency === 'INR' ? '₹ INR' : '$ USD'));
-
-              window.dispatchEvent(new CustomEvent('currency-changed', { detail: { currency: this.currency } }));
-
-          },
-
-          cart: (function() {
-
-              try {
-
-                  const saved = JSON.parse(localStorage.getItem('artisan_cart'));
-
-                  if (Array.isArray(saved)) return saved;
-
-              } catch (e) {}
-
-              return [];
-
-          })(),
-
-          toastMessage: '',
-
-          showToast: false,
-
-          saveCart() {
-
-              try { localStorage.setItem('artisan_cart', JSON.stringify(this.cart)); } catch (e) {}
-
-          },
-
-          addToCart(product) {
-
-              const existing = this.cart.find(i => i.id === product.id);
-
-              if (existing) {
-
-                  existing.quantity++;
-
-              } else {
-
-                  this.cart.push({
-
-                      id: product.id,
-
-                      name: product.name,
-
-                      price: parseFloat(product.price),
-
-                      regularPrice: product.regularPrice ? parseFloat(product.regularPrice) : null,
-
-                      quantity: 1,
-
-                      image: product.image
-
-                  });
-
-              }
-
-              this.saveCart();
-
-              this.triggerToast('Added ' + product.name + ' to your bag');
-
-              this.cartDrawerOpen = true;
-
-          },
-
-          removeFromCart(index) {
-
-              this.cart.splice(index, 1);
-
-              this.saveCart();
-
-          },
-
-          get cartTotalFormatted() {
-
-              const totalUSD = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-              return this.formatPrice(totalUSD);
-
-          },
-
-          get cartCount() {
-
-              return this.cart.reduce((sum, item) => sum + item.quantity, 0);
-
-          },
-
-          triggerToast(msg) {
-
-              this.toastMessage = msg;
-
-              this.showToast = true;
-
-              setTimeout(() => { this.showToast = false; }, 3500);
-
-          },
-
-          openQuickView(prod) {
-
-              this.quickViewProduct = prod;
-
-              this.quickViewOpen = true;
-
-          }
-
-      }">
-
-
-
-    <!-- Luxury Botanical Preloader (Home Page Only) -->
+    <!-- Alpine.js Global Mindful Store & Reactive Controller -->
+    <script>
+    window.artisanCatalog = [{"id": 1, "name": "Biotin B7 Hair, Skin & Nails Gummies", "category": "gummies", "price": 28, "regularPrice": 34.0, "badge": "Bestseller", "ritual": "\u2600\ufe0f Solar Morning Vitality", "notes": "Wild Crisp Strawberry & Bioactive Zinc", "image": "images/products/biotin-gummies.png", "description": "High-potency Biotin B7 infused with Zinc, Vitamin C & E for radiant skin glow, keratin synthesis, and hair strength.", "swatches": [{"label": "30 Gummies", "price": 28}, {"label": "60 Gummies", "price": 48}]}, {"id": 2, "name": "Glutathione Glow & Radiance Gummies", "category": "gummies", "price": 32, "regularPrice": 38.0, "badge": "Clinical Glow", "ritual": "\u2600\ufe0f Daily Cellular Rejuvenation", "notes": "Tangy Wild Cranberry & Vitamin C Synergy", "image": "images/products/glutathione-gummies.png", "description": "L-Glutathione master antioxidant blended with Vitamin C to neutralize oxidative stress and amplify inner dermis radiance.", "swatches": [{"label": "30 Gummies", "price": 32}, {"label": "60 Gummies", "price": 56}]}, {"id": 3, "name": "Pure Himalayan Shilajit Gummies", "category": "gummies", "price": 42, "regularPrice": 49.0, "badge": "Gold Grade Resin", "ritual": "\u2600\ufe0f Solar Prana & Stamina", "notes": "Smoked Tamarind & 84+ Ionic Minerals", "image": "images/products/shilajit-gummies.png", "description": "Purified Grade-A Himalayan Shilajit with 75% Fulvic Acid for cellular mitochondrial energy, vitality, and hormonal balance.", "swatches": [{"label": "30 Gummies", "price": 42}, {"label": "60 Gummies", "price": 74}]}, {"id": 4, "name": "Deep Rest Melatonin Sleep Gummies", "category": "gummies", "price": 26, "regularPrice": 32.0, "badge": "Twilight Rest", "ritual": "\ud83c\udf19 Lunar Twilight Recovery", "notes": "Soothing Lavender, Chamomile & Dark Berry", "image": "images/products/sleep-gummies.png", "description": "Non-habit forming 5mg Melatonin paired with L-Theanine, Chamomile, and Passionflower for deep REM sleep restoration.", "swatches": [{"label": "30 Gummies", "price": 26}, {"label": "60 Gummies", "price": 44}]}, {"id": 5, "name": "Apple Cider Vinegar Detox Gummies", "category": "gummies", "price": 24, "regularPrice": 29.0, "badge": "With 'The Mother'", "ritual": "\u2600\ufe0f Pre-Meal Digestive Fire", "notes": "Crisp Orchard Apple & Pomegranate Extract", "image": "images/products/acv-gummies.png", "description": "Real unfiltered Apple Cider Vinegar with 'The Mother' and Vitamin B12 to optimize gut flora balance and metabolic rhythm.", "swatches": [{"label": "30 Gummies", "price": 24}, {"label": "60 Gummies", "price": 40}]}, {"id": 6, "name": "Marine Collagen Peptides Gummies", "category": "gummies", "price": 36, "regularPrice": 44.0, "badge": "Type I & III", "ritual": "\ud83c\udf3f Dermal Moisture & Joint Grace", "notes": "Lush Wild Blueberry & Hyaluronic Synergy", "image": "images/products/marine-collagen-gummies.png", "description": "Hydrolyzed bioactive marine collagen peptides to nourish dermal elasticity, joint flexibility, and nail resilience.", "swatches": [{"label": "30 Gummies", "price": 36}, {"label": "60 Gummies", "price": 62}]}, {"id": 7, "name": "Weight Management & Metabolism Gummies", "category": "gummies", "price": 28, "regularPrice": 34.0, "badge": "Metabolic Cleanse", "ritual": "\u2600\ufe0f Midday Thermogenic Flow", "notes": "Green Tea Matcha & Garcinia Zest", "image": "images/products/weight-loss-gummies.png", "description": "Potent Green Coffee, Garcinia Cambogia, and L-Carnitine formulation to assist healthy thermogenesis and appetite harmony.", "swatches": [{"label": "30 Gummies", "price": 28}, {"label": "60 Gummies", "price": 48}]}, {"id": 8, "name": "Hyaluronic Acid Hydration Gummies", "category": "gummies", "price": 30, "regularPrice": 36.0, "badge": "Deep Moisture", "ritual": "\ud83c\udf3f All-Day Cellular Hydration", "notes": "Subtle Lychee Water & Aloe Vera Nectar", "image": "images/products/hyaluronic-acid-gummies.png", "description": "Multi-molecular Hyaluronic Acid paired with Vitamin C to hydrate thirsty dermal layers from deep within.", "swatches": [{"label": "30 Gummies", "price": 30}, {"label": "60 Gummies", "price": 52}]}, {"id": 9, "name": "Daily Multivitamin Essentials Gummies", "category": "gummies", "price": 22, "regularPrice": 28.0, "badge": "Daily Balance", "ritual": "\u2600\ufe0f Solar Morning Foundation", "notes": "Sun-Ripened Valencia Orange", "image": "images/products/multivitamin-gummies.png", "description": "Complete spectrum of 14 essential vitamins and minerals including D3, Zinc, Iodine, and B-Complex for full-body synergy.", "swatches": [{"label": "30 Gummies", "price": 22}, {"label": "60 Gummies", "price": 38}]}, {"id": 10, "name": "PCOS / PCOD Hormonal Balance Gummies", "category": "gummies", "price": 34, "regularPrice": 40.0, "badge": "Endocrine Harmony", "ritual": "\ud83c\udf3f Cyclical Rhythm Balance", "notes": "Wild Raspberry & Shatavari Botanical", "image": "images/products/pcospcod-gummies.png", "description": "Clinical 40:1 Myo & D-Chiro Inositol ratio infused with Folate and Shatavari for cycle regularity and metabolic comfort.", "swatches": [{"label": "30 Gummies", "price": 34}, {"label": "60 Gummies", "price": 58}]}, {"id": 11, "name": "Vitality & Sexual Wellness Gummies", "category": "gummies", "price": 38, "regularPrice": 45.0, "badge": "Botanical Libido", "ritual": "\u2600\ufe0f Intimate Vigor & Energy", "notes": "Tart Cherry & Ashwagandha Root Extract", "image": "images/products/sexual-wellness-gummies.png", "description": "Adaptogenic Ashwagandha KSM-66, Maca root, Gokshura, and Fenugreek extract to elevate stamina, mood, and circulation.", "swatches": [{"label": "30 Gummies", "price": 38}, {"label": "60 Gummies", "price": 66}]}, {"id": 12, "name": "Bioactive Whey Protein Gummies", "category": "gummies", "price": 28, "regularPrice": 34.0, "badge": "BCAA Infused", "ritual": "\ud83c\udf3f Post-Practice Muscle Fuel", "notes": "Sweet Mango Pulp & Isolate Protein", "image": "images/products/whey-protein-gummies.png", "description": "Micro-filtered whey isolate protein in a chewy pectin gummy delivery. Convenient BCAA replenishment on the go.", "swatches": [{"label": "30 Gummies", "price": 28}, {"label": "60 Gummies", "price": 48}]}, {"id": 13, "name": "Kashmiri Saffron & Ashwagandha Raw Honey", "category": "honey", "price": 32, "regularPrice": 38.0, "badge": "Single Origin", "ritual": "\u2600\ufe0f Solar AM Vitality Elixir", "notes": "Golden Amber Nectar & Red Saffron Threads", "image": "images/products/saffron-ashwagandha-honey.png", "description": "Unheated Himalayan forest raw honey infused with pure Grade-1 Mongra Kashmiri Saffron and adaptogenic Ashwagandha root for cognitive calm and vitality.", "swatches": [{"label": "250g Glass Jar", "price": 32}, {"label": "500g Glass Jar", "price": 54}]}, {"id": 14, "name": "Himalayan Ginger & Wild Turmeric Honey", "category": "honey", "price": 28, "regularPrice": 34.0, "badge": "Cold Infused", "ritual": "\ud83c\udf3f Respiratory & Digestive Radiance", "notes": "Piquant Spiced Warmth & Wild Blossom", "image": "images/products/ginger-turmeric-honey.png", "description": "Raw multi-floral wild honey cold-infused with high-curcumin Lakadong turmeric and sun-dried ginger root. Natural immune defense.", "swatches": [{"label": "250g Glass Jar", "price": 28}, {"label": "500g Glass Jar", "price": 48}]}, {"id": 15, "name": "Holy Basil Tulsi & Moringa Forest Nectar", "category": "honey", "price": 26, "regularPrice": 32.0, "badge": "Sacred Flora", "ritual": "\ud83e\uddd8 Meditative Inner Stillness", "notes": "Aromatic Herbal Meadow & Sacred Floral Finish", "image": "images/products/tulsi-moringa-honey.png", "description": "Sacred Krishna Tulsi and nutrient-dense organic Moringa leaves slowly steeped into raw unprocessed forest honey. Balances cortisol naturally.", "swatches": [{"label": "250g Glass Jar", "price": 26}, {"label": "500g Glass Jar", "price": 46}]}, {"id": 16, "name": "Wildflower Raw Honey Comb Reserve", "category": "honey", "price": 34, "regularPrice": 40.0, "badge": "Virgin Comb", "ritual": "\ud83c\udf19 Evening Twilight Restoration", "notes": "Unfiltered Hexagonal Comb & Royal Jelly", "image": "images/products/saffron-ashwagandha-honey.png", "description": "Pure 100% hand-cut raw virgin honeycomb straight from high-altitude alpine wildflowers. Rich in natural bee pollen, propolis, and living enzymes.", "swatches": [{"label": "300g Raw Cut Comb", "price": 34}, {"label": "600g Jar", "price": 58}]}, {"id": 17, "name": "Raw Cacao Almond & Maca Energy Bar", "category": "bars", "price": 24, "regularPrice": 28.0, "badge": "16g Clean Protein", "ritual": "\u2600\ufe0f Solar Morning Prana & Endurance", "notes": "Velvety Dark Cacao & Sprouted Almond Crunch", "image": "images/products/cacao-maca-protein-bar.png", "description": "Cold-pressed Ecuadorian raw cacao nibs, sprouted organic almonds, and Peruvian yellow maca. Zero refined sugar, 100% plant-derived vitality.", "swatches": [{"label": "6-Pack Box", "price": 24}, {"label": "12-Pack Box", "price": 42}]}, {"id": 18, "name": "Pistachio Spirulina Clean Recovery Bar", "category": "bars", "price": 26, "regularPrice": 30.0, "badge": "18g Clean Protein", "ritual": "\ud83c\udf3f Post-Practice Cellular Repair", "notes": "Wild Iranian Pistachio & Alkalizing Spirulina", "image": "images/products/pistachio-spirulina-bar.png", "description": "Alkalizing spirulina superfood infused with crushed raw pistachios and sprouted brown rice protein for instantaneous amino acid delivery.", "swatches": [{"label": "6-Pack Box", "price": 26}, {"label": "12-Pack Box", "price": 46}]}, {"id": 19, "name": "Wild Fig & Spiced Cardamom Adaptogen Bar", "category": "bars", "price": 24, "regularPrice": 28.0, "badge": "14g Clean Protein", "ritual": "\ud83c\udf19 Twilight Nourishment & Satiety", "notes": "Chewy Anatolian Fig & Fresh Green Cardamom", "image": "images/products/spiced-fig-protein-bar.png", "description": "Sun-dried Anatolian black figs, fragrant crushed green cardamom, chia seeds, and prebiotic root fiber for calming sustained nourishment.", "swatches": [{"label": "6-Pack Box", "price": 24}, {"label": "12-Pack Box", "price": 42}]}, {"id": 20, "name": "Golden Turmeric Coconut Crunch Bar", "category": "bars", "price": 22, "regularPrice": 26.0, "badge": "Anti-Inflammatory", "ritual": "\ud83e\uddd8 All-Day Holistic Anti-Inflammatory", "notes": "Toasted Coconut Flakes & Golden Curcumin", "image": "images/products/cacao-maca-protein-bar.png", "description": "Slow-toasted coconut shreds, cold-pressed golden turmeric curcumin, black pepper piperine, and sprouted pumpkin seeds for holistic ease.", "swatches": [{"label": "6-Pack Box", "price": 22}, {"label": "12-Pack Box", "price": 38}]}];
+
+    window.artisanStore = function() {
+        return {
+            mobileMenuOpen: false,
+            cartDrawerOpen: false,
+            activePillar: 'all',
+            selectedSwatches: {},
+
+            wishlist: (function() {
+                try {
+                    const saved = JSON.parse(localStorage.getItem('artisan_wishlist') || '[]');
+                    if (Array.isArray(saved)) return saved;
+                } catch(e) {}
+                return [];
+            })(),
+
+            toggleWishlist(prod) {
+                if (!prod || !prod.id) return;
+                const idx = this.wishlist.indexOf(prod.id);
+                if (idx > -1) {
+                    this.wishlist.splice(idx, 1);
+                    this.triggerToast('Removed from your Mindful Wishlist');
+                } else {
+                    this.wishlist.push(prod.id);
+                    this.triggerToast('Saved to your Mindful Wishlist 🌿');
+                }
+                try { localStorage.setItem('artisan_wishlist', JSON.stringify(this.wishlist)); } catch(e) {}
+            },
+
+            isWishlisted(id) {
+                return this.wishlist.includes(id);
+            },
+
+            getSwatchPrice(prod) {
+                if (!prod) return 0;
+                const selected = this.selectedSwatches[prod.id];
+                if (selected && selected.price) return selected.price;
+                return prod.price;
+            },
+
+            setSwatch(prodId, swatch) {
+                this.selectedSwatches[prodId] = swatch;
+            },
+
+            quickViewOpen: false,
+            quickViewProduct: null,
+
+            currency: (function() {
+                try {
+                    const saved = localStorage.getItem('artisan_currency');
+                    if (saved && (saved === 'INR' || saved === 'USD')) return saved;
+                } catch (e) {}
+                return 'USD';
+            })(),
+
+            exchangeRate: 85,
+
+            formatPrice(amountInUSD) {
+                if (amountInUSD === null || amountInUSD === undefined || isNaN(amountInUSD)) return '';
+                const num = parseFloat(amountInUSD);
+                if (this.currency === 'INR') {
+                    return '₹' + Math.round(num * this.exchangeRate).toLocaleString('en-IN');
+                }
+                return '$' + num.toFixed(2);
+            },
+
+            toggleCurrency() {
+                this.currency = this.currency === 'USD' ? 'INR' : 'USD';
+                try { localStorage.setItem('artisan_currency', this.currency); } catch (e) {}
+                this.triggerToast('Currency updated: ' + (this.currency === 'INR' ? '₹ INR (Indian Rupee)' : '$ USD (US Dollar)'));
+                window.dispatchEvent(new CustomEvent('currency-changed', { detail: { currency: this.currency } }));
+            },
+
+            setCurrency(curr) {
+                this.currency = curr;
+                try { localStorage.setItem('artisan_currency', this.currency); } catch (e) {}
+                this.triggerToast('Currency updated: ' + (this.currency === 'INR' ? '₹ INR' : '$ USD'));
+                window.dispatchEvent(new CustomEvent('currency-changed', { detail: { currency: this.currency } }));
+            },
+
+            cart: (function() {
+                try {
+                    const saved = JSON.parse(localStorage.getItem('artisan_cart'));
+                    if (Array.isArray(saved)) return saved;
+                } catch (e) {}
+                return [];
+            })(),
+
+            toastMessage: '',
+            showToast: false,
+
+            saveCart() {
+                try { localStorage.setItem('artisan_cart', JSON.stringify(this.cart)); } catch (e) {}
+            },
+
+            addToCart(product) {
+                if (!product) return;
+                const existing = this.cart.find(i => i.id === product.id);
+                if (existing) {
+                    existing.quantity++;
+                } else {
+                    this.cart.push({
+                        id: product.id,
+                        name: product.name,
+                        price: parseFloat(product.price),
+                        regularPrice: product.regularPrice ? parseFloat(product.regularPrice) : null,
+                        quantity: 1,
+                        image: product.image
+                    });
+                }
+                this.saveCart();
+                this.triggerToast('Added ' + product.name + ' to your bag');
+                this.cartDrawerOpen = true;
+            },
+
+            removeFromCart(index) {
+                this.cart.splice(index, 1);
+                this.saveCart();
+            },
+
+            get cartTotalFormatted() {
+                const totalUSD = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                return this.formatPrice(totalUSD);
+            },
+
+            get cartCount() {
+                return this.cart.reduce((sum, item) => sum + item.quantity, 0);
+            },
+
+            triggerToast(msg) {
+                this.toastMessage = msg;
+                this.showToast = true;
+                setTimeout(() => { this.showToast = false; }, 3500);
+            },
+
+            openQuickView(prod) {
+                if (!prod) return;
+                this.quickViewProduct = prod;
+                this.quickViewOpen = true;
+            },
+
+            /* --- 10-Second Timed Newsletter VIP Modal State --- */
+            newsletterModalOpen: false,
+            newsletterEmail: '',
+            newsletterSubscribed: false,
+            closeNewsletter() {
+                this.newsletterModalOpen = false;
+                try { localStorage.setItem('artisan_newsletter_dismissed', 'true'); } catch(e) {}
+            },
+            submitNewsletter() {
+                if (!this.newsletterEmail || !this.newsletterEmail.includes('@')) {
+                    this.triggerToast('Please enter a valid email address');
+                    return;
+                }
+                this.newsletterSubscribed = true;
+                try { localStorage.setItem('artisan_newsletter_dismissed', 'true'); } catch(e) {}
+                this.triggerToast('Welcome to the Sanctuary! 15% discount code WELCOME15 unlocked 🌿');
+                setTimeout(() => { this.newsletterModalOpen = false; }, 2000);
+            },
+
+            /* --- Live Sales Social Proof Toast (Bottom Right) --- */
+            salesToastOpen: false,
+            salesToastPaused: false,
+            salesIndex: 0,
+            salesPurchases: [
+                { id: 1, city: "New York, US", time: "45 minutes ago", product: "Biotin B7 Hair, Skin & Nails Gummies", image: "images/products/biotin-gummies.png" },
+                { id: 13, city: "London, UK", time: "12 minutes ago", product: "Kashmiri Saffron & Ashwagandha Raw Honey", image: "images/products/saffron-ashwagandha-honey.png" },
+                { id: 17, city: "San Francisco, US", time: "6 minutes ago", product: "Raw Cacao Almond & Maca Energy Bar", image: "images/products/cacao-maca-protein-bar.png" },
+                { id: 3, city: "Mumbai, IN", time: "2 minutes ago", product: "Pure Himalayan Shilajit Gummies", image: "images/products/shilajit-gummies.png" },
+                { id: 4, city: "Sydney, AU", time: "18 minutes ago", product: "Deep Rest Melatonin Sleep Gummies", image: "images/products/sleep-gummies.png" },
+                { id: 14, city: "Paris, FR", time: "31 minutes ago", product: "Himalayan Ginger & Wild Turmeric Honey", image: "images/products/ginger-turmeric-honey.png" },
+                { id: 2, city: "Toronto, CA", time: "8 minutes ago", product: "Glutathione Glow & Radiance Gummies", image: "images/products/glutathione-gummies.png" },
+                { id: 18, city: "Berlin, DE", time: "22 minutes ago", product: "Pistachio Spirulina Clean Recovery Bar", image: "images/products/pistachio-spirulina-bar.png" }
+            ],
+            get currentSale() {
+                return this.salesPurchases[this.salesIndex % this.salesPurchases.length];
+            },
+            closeSalesToast() {
+                this.salesToastOpen = false;
+                this.salesToastPaused = true;
+                setTimeout(() => { this.salesToastPaused = false; }, 45000);
+            },
+            getProductById(id) {
+                const cat = window.artisanCatalog || [];
+                return cat.find(p => p.id === id) || this.currentSale;
+            },
+            initExperience() {
+                try {
+                    if (!localStorage.getItem('artisan_newsletter_dismissed')) {
+                        setTimeout(() => {
+                            if (!localStorage.getItem('artisan_newsletter_dismissed')) {
+                                this.newsletterModalOpen = true;
+                            }
+                        }, 10000);
+                    }
+                } catch(e) {}
+
+                setTimeout(() => {
+                    this.runSalesLoop();
+                }, 3500);
+            },
+            runSalesLoop() {
+                if (!this.salesToastPaused) {
+                    this.salesToastOpen = true;
+                    setTimeout(() => {
+                        if (!this.salesToastPaused) {
+                            this.salesToastOpen = false;
+                            this.salesIndex = (this.salesIndex + 1) % this.salesPurchases.length;
+                        }
+                        setTimeout(() => { this.runSalesLoop(); }, 9000);
+                    }, 6000);
+                } else {
+                    setTimeout(() => { this.runSalesLoop(); }, 10000);
+                }
+            }
+        };
+    };
+
+    document.addEventListener('alpine:init', function() {
+        if (window.Alpine) {
+            window.Alpine.data('artisanStore', window.artisanStore);
+        }
+    });
+    </script>
+
+<body class="bg-[#eae4d8] text-[#566b5e] antialiased selection:bg-[#566b5e] selection:text-[#eae4d8]"
+      x-data="artisanStore()"
+      x-init="initExperience()"
+      @open-cart.window="cartDrawerOpen = true">
+
+<!-- Luxury Botanical Preloader (Home Page Only) -->
 
     
         <style id="artician-preloader-styles">
