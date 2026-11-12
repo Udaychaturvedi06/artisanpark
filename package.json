@@ -1,0 +1,19 @@
+{
+  "name": "artisanpark-replica",
+  "version": "1.0.0",
+  "description": "Replica of The Artisan Park (https://web.theartisanpark.com) - Mindful Living & Custom Artisan E-Commerce",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "artisanpark",
+    "ecommerce",
+    "tailwind",
+    "alpinejs",
+    "wellness-gummies"
+  ],
+  "author": "",
+  "license": "ISC"
+}

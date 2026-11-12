@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Order Confirmed — The Artician Park</title>
+    <meta name="description" content="Thank you for your order with The Artician Park botanical wellness sanctuary.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Unbounded:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="build/assets/app-CJf5TaD9.css" />
+
+    <style>
+        :root {
+            --brand-dark: #0B2A2B;
+            --brand-sand: #EBDBC2;
+            --color-primary: #566b5e;
+            --color-canvas: #eae4d8;
+        }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f7f3ee;
+            color: #0b2a2b;
+        }
+        .font-serif-heading {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between" x-data="orderSuccess()">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-[#0b2a2b] text-[#ebdbc2] text-xs py-2.5 text-center font-medium tracking-wide">
+        🌿 Pan-India Express Delivery &bull; Sustainably Crafted Botanical Wellness
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="bg-[#eae4d8] border-b border-[#566b5e]/20 py-4 px-6 sm:px-12">
+        <div class="max-w-6xl mx-auto flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3">
+                <img src="images/logo-sand.png" alt="ArtisanPark Logo" class="h-10 w-auto">
+                <div class="flex flex-col">
+                    <span class="font-serif-heading text-lg font-bold tracking-widest text-[#0b2a2b]">THE ARTICIAN PARK</span>
+                    <span class="text-[9px] tracking-[0.2em] uppercase text-[#566b5e] font-semibold">Botanical Wellness Sanctuary</span>
+                </div>
+            </a>
+            <a href="index.html" class="text-xs font-bold uppercase tracking-wider text-[#566b5e] hover:text-[#0b2a2b] flex items-center gap-1.5 transition">
+                <span>&larr; Back to Shop</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 py-12 flex-1 w-full">
+        <div class="bg-white border border-[#566b5e]/20 shadow-xl rounded-2xl overflow-hidden p-6 sm:p-10">
+            
+            <!-- Success Status Header -->
+            <div class="text-center pb-8 border-b border-[#566b5e]/15">
+                <div class="w-16 h-16 mx-auto bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mb-4">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path>
+                    </svg>
+                </div>
+                <h1 class="text-2xl sm:text-3xl font-serif-heading font-bold text-[#0b2a2b]">Thank You for Your Order!</h1>
+                <p class="text-sm text-[#566b5e] mt-2">Your botanical wellness batch is confirmed and being hand-prepared.</p>
+                
+                <div class="mt-4 inline-flex items-center gap-3 bg-[#eae4d8]/60 px-5 py-2.5 rounded-full border border-[#566b5e]/20">
+                    <span class="text-xs font-semibold text-[#566b5e]">Order Number:</span>
+                    <span class="text-sm font-mono font-bold text-[#0b2a2b]" x-text="order.order_id || 'AP-738291'">AP-738291</span>
+                </div>
+            </div>
+
+            <!-- 2-Col Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 py-8 border-b border-[#566b5e]/15">
+                <!-- Shipping Info -->
+                <div class="space-y-3">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-[#566b5e]">Shipping Details</h2>
+                    <div class="text-sm text-[#0b2a2b] space-y-1">
+                        <p class="font-bold" x-text="order.customer_name || 'Valued Customer'"></p>
+                        <p x-text="order.shipping_address || 'Botanical Street'"></p>
+                        <p><span x-text="order.shipping_city"></span>, <span x-text="order.shipping_state"></span> <span x-text="order.shipping_postal_code"></span></p>
+                        <p x-text="order.shipping_country || 'India'"></p>
+                        <p class="text-xs text-[#566b5e] pt-1">Email: <span class="text-[#0b2a2b] font-medium" x-text="order.customer_email"></span></p>
+                        <p class="text-xs text-[#566b5e]">Phone: <span class="text-[#0b2a2b] font-medium" x-text="order.customer_phone"></span></p>
+                    </div>
+                </div>
+
+                <!-- Payment & Delivery summary -->
+                <div class="space-y-3">
+                    <h2 class="text-xs font-bold uppercase tracking-widest text-[#566b5e]">Payment & Delivery</h2>
+                    <div class="text-sm text-[#0b2a2b] space-y-2 bg-[#f9f7f4] p-4 rounded-xl border border-[#566b5e]/10">
+                        <div class="flex justify-between">
+                            <span class="text-xs text-[#566b5e]">Payment Method</span>
+                            <span class="text-xs font-bold uppercase text-[#0b2a2b]" x-text="formatPayment(order.payment_method)">CARD / ONLINE</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-xs text-[#566b5e]">Status</span>
+                            <span class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">CONFIRMED</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-xs text-[#566b5e]">Estimated Delivery</span>
+                            <span class="text-xs font-bold text-[#0b2a2b]">2 - 4 Business Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order Items Breakdown -->
+            <div class="py-6">
+                <h2 class="text-xs font-bold uppercase tracking-widest text-[#566b5e] mb-4">Purchased Items</h2>
+                <div class="divide-y divide-[#566b5e]/10">
+                    <template x-for="(item, idx) in (order.items && order.items.length ? order.items : sampleItems)" :key="idx">
+                        <div class="py-3 flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-3">
+                                <img :src="item.image || 'images/products/biotin-gummies.png'" class="w-12 h-12 object-contain bg-[#f9f7f4] rounded-lg p-1 border border-[#566b5e]/10">
+                                <div>
+                                    <h3 class="font-bold text-[#0b2a2b]" x-text="item.name"></h3>
+                                    <p class="text-xs text-[#566b5e]">Qty: <span class="font-semibold text-[#0b2a2b]" x-text="item.quantity"></span> &times; <span x-text="formatPrice(item.price)"></span></p>
+                                </div>
+                            </div>
+                            <span class="font-bold text-[#0b2a2b]" x-text="formatPrice(item.price * item.quantity)"></span>
+                        </div>
+                    </template>
+                </div>
+
+                <!-- Financial Totals -->
+                <div class="border-t border-[#566b5e]/15 mt-6 pt-4 space-y-2 text-sm">
+                    <div class="flex justify-between text-[#566b5e]">
+                        <span>Subtotal</span>
+                        <span class="font-semibold text-[#0b2a2b]" x-text="formatPrice(order.subtotal || 29.99)"></span>
+                    </div>
+                    <div x-show="order.coupon_discount > 0" class="flex justify-between text-emerald-700 font-medium">
+                        <span>Promo Discount (<span x-text="order.coupon_code"></span>)</span>
+                        <span x-text="'-' + formatPrice(order.coupon_discount)"></span>
+                    </div>
+                    <div class="flex justify-between text-[#566b5e]">
+                        <span>Pan-India Express Shipping</span>
+                        <span class="font-bold text-emerald-700 uppercase text-xs">FREE</span>
+                    </div>
+                    <div class="flex justify-between text-base font-bold text-[#0b2a2b] border-t border-[#566b5e]/20 pt-3">
+                        <span>Total Paid</span>
+                        <span class="text-lg text-[#566b5e]" x-text="formatPrice(order.final_total || 29.99)"></span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="mt-8 pt-6 border-t border-[#566b5e]/15 flex flex-col sm:flex-row items-center justify-between gap-4">
+                <button @click="window.print()" class="w-full sm:w-auto px-6 py-3 bg-[#eae4d8] hover:bg-[#ebdbc2] text-[#0b2a2b] text-xs font-bold uppercase tracking-wider rounded-xl transition flex items-center justify-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+                    <span>Print Invoice</span>
+                </button>
+                <a href="index.html" class="w-full sm:w-auto px-8 py-3 bg-[#566b5e] hover:bg-[#0b2a2b] text-white text-xs font-bold uppercase tracking-widest rounded-xl transition text-center shadow-md">
+                    Continue Shopping &rarr;
+                </a>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-[#0b2a2b] text-[#ebdbc2] py-8 text-center text-xs">
+        <p>&copy; 2026 The Artician Park. All Rights Reserved. Bio-Active Wellness &amp; Botanicals.</p>
+    </footer>
+
+    <script>
+        function orderSuccess() {
+            return {
+                order: (function() {
+                    try {
+                        const raw = localStorage.getItem('artisan_last_order');
+                        if (raw) return JSON.parse(raw);
+                    } catch(e) {}
+                    return {
+                        order_id: 'AP-' + Math.floor(100000 + Math.random() * 900000),
+                        customer_name: 'Jane Doe',
+                        customer_email: 'jane@artisanpark.com',
+                        customer_phone: '+91 98765 43210',
+                        shipping_address: '742 Botanical Way, Suite 4B',
+                        shipping_city: 'Bangalore',
+                        shipping_state: 'Karnataka',
+                        shipping_postal_code: '560001',
+                        shipping_country: 'India',
+                        payment_method: 'card',
+                        subtotal: 29.99,
+                        final_total: 29.99,
+                        items: [
+                            {
+                                name: 'Biotin B7 Hair, Skin & Nails Gummies',
+                                price: 29.99,
+                                quantity: 1,
+                                image: 'images/products/biotin-gummies.png'
+                            }
+                        ]
+                    };
+                })(),
+                sampleItems: [
+                    {
+                        name: 'Biotin B7 Hair, Skin & Nails Gummies',
+                        price: 29.99,
+                        quantity: 1,
+                        image: 'images/products/biotin-gummies.png'
+                    }
+                ],
+                formatPrice(amount) {
+                    const num = parseFloat(amount || 0);
+                    const currency = this.order.currency || 'USD';
+                    if (currency === 'INR') {
+                        return '₹' + Math.round(num * 85).toLocaleString('en-IN');
+                    }
+                    return '$' + num.toFixed(2);
+                },
+                formatPayment(method) {
+                    if (method === 'cod') return 'Cash On Delivery (COD)';
+                    if (method === 'upi') return 'Instant UPI / QR';
+                    return 'Credit / Debit Card';
+                }
+            };
+        }
+    </script>
+</body>
+</html>

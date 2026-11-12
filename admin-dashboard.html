@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full bg-[#f4eee6]">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Control Panel — The Artician Park</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="build/assets/app-CJf5TaD9.css" />
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #f4eee6;
+            color: #0b2a2b;
+        }
+        .font-serif-title {
+            font-family: 'Playfair Display', Georgia, serif;
+        }
+    </style>
+</head>
+<body class="min-h-full flex flex-col" x-data="adminDashboard()">
+
+    <!-- Admin Nav -->
+    <nav class="bg-[#566b5e] text-[#eae4d8] px-6 py-4 flex items-center justify-between shadow-md">
+        <div class="flex items-center gap-3">
+            <a href="index.html" class="flex items-center gap-2 group">
+                <div class="w-9 h-9 rounded-full bg-[#eae4d8] text-[#566b5e] flex items-center justify-center font-bold">
+                    🌿
+                </div>
+                <div>
+                    <span class="text-lg font-black tracking-wider uppercase font-serif-title block leading-none">ARTICIAN</span>
+                    <span class="text-[9px] tracking-widest uppercase opacity-80 font-bold">CONTROL PANEL</span>
+                </div>
+            </a>
+        </div>
+        <div class="flex items-center gap-4 text-xs font-semibold">
+            <a href="index.html" class="px-3 py-1.5 rounded-lg bg-[#eae4d8]/15 hover:bg-[#eae4d8]/25 transition flex items-center gap-1.5">
+                <span>View Storefront &rarr;</span>
+            </a>
+            <a href="login.html" class="hover:underline opacity-80">Log Out</a>
+        </div>
+    </nav>
+
+    <!-- Header Stats Banner -->
+    <header class="bg-[#eae4d8] border-b border-[#566b5e]/20 px-6 py-8">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div>
+                <h1 class="text-2xl font-bold font-serif-title text-[#0b2a2b]">Sanctuary Overview</h1>
+                <p class="text-xs text-[#566b5e] mt-1 font-medium">Manage catalog gummies, orders, customer logs &amp; banner promotions.</p>
+            </div>
+            <div class="flex items-center gap-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                    <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                    Store Live &amp; Online
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Content -->
+    <main class="max-w-7xl mx-auto px-6 py-8 flex-1 w-full space-y-8">
+        
+        <!-- KPI Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div class="bg-white p-5 rounded-2xl border border-[#566b5e]/15 shadow-sm">
+                <div class="text-xs font-bold uppercase tracking-wider text-[#566b5e]">Total Orders</div>
+                <div class="text-2xl font-bold text-[#0b2a2b] mt-2" x-text="orders.length">128</div>
+                <div class="text-[11px] text-emerald-600 font-semibold mt-1">&uarr; +14% this week</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-[#566b5e]/15 shadow-sm">
+                <div class="text-xs font-bold uppercase tracking-wider text-[#566b5e]">Active Products</div>
+                <div class="text-2xl font-bold text-[#0b2a2b] mt-2">12 Gummies</div>
+                <div class="text-[11px] text-[#566b5e] font-semibold mt-1">100% Pectin Bio-Active</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-[#566b5e]/15 shadow-sm">
+                <div class="text-xs font-bold uppercase tracking-wider text-[#566b5e]">Average Rating</div>
+                <div class="text-2xl font-bold text-[#0b2a2b] mt-2">4.9 / 5.0 ★</div>
+                <div class="text-[11px] text-emerald-600 font-semibold mt-1">1,400+ Verified reviews</div>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-[#566b5e]/15 shadow-sm">
+                <div class="text-xs font-bold uppercase tracking-wider text-[#566b5e]">Eco Pledge</div>
+                <div class="text-2xl font-bold text-[#0b2a2b] mt-2">100% Bio-Shield</div>
+                <div class="text-[11px] text-[#566b5e] font-semibold mt-1">Zero Plastic Jars</div>
+            </div>
+        </div>
+
+        <!-- Recent Customer Orders Section -->
+        <div class="bg-white rounded-2xl border border-[#566b5e]/15 shadow-sm overflow-hidden">
+            <div class="p-6 border-b border-[#566b5e]/10 flex items-center justify-between">
+                <div>
+                    <h2 class="text-lg font-bold text-[#0b2a2b] font-serif-title">Recent Customer Orders</h2>
+                    <p class="text-xs text-[#566b5e]">Real-time customer transactions stored locally</p>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto">
+                <table class="w-full text-left text-xs">
+                    <thead class="bg-[#f9f7f4] text-[#566b5e] uppercase tracking-wider font-bold border-b border-[#566b5e]/10">
+                        <tr>
+                            <th class="px-6 py-3">Order ID</th>
+                            <th class="px-6 py-3">Customer</th>
+                            <th class="px-6 py-3">Shipping Location</th>
+                            <th class="px-6 py-3">Items</th>
+                            <th class="px-6 py-3">Payment</th>
+                            <th class="px-6 py-3">Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-[#566b5e]/10">
+                        <template x-for="(o, idx) in orders" :key="idx">
+                            <tr class="hover:bg-[#f9f7f4]/60 transition">
+                                <td class="px-6 py-4 font-mono font-bold text-[#566b5e]" x-text="o.order_id"></td>
+                                <td class="px-6 py-4">
+                                    <div class="font-bold text-[#0b2a2b]" x-text="o.customer_name"></div>
+                                    <div class="text-[11px] text-[#566b5e]" x-text="o.customer_email"></div>
+                                </td>
+                                <td class="px-6 py-4 text-[#0b2a2b]" x-text="(o.shipping_city || '') + ', ' + (o.shipping_state || '')"></td>
+                                <td class="px-6 py-4 text-[#566b5e]">
+                                    <span x-text="o.items ? o.items.length : 1"></span> item(s)
+                                </td>
+                                <td class="px-6 py-4 uppercase font-semibold text-xs" x-text="o.payment_method || 'Card'"></td>
+                                <td class="px-6 py-4 font-bold text-[#0b2a2b]" x-text="'$' + (o.final_total || '29.99')"></td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Catalog Management Preview -->
+        <div class="bg-white rounded-2xl border border-[#566b5e]/15 shadow-sm p-6">
+            <h2 class="text-lg font-bold text-[#0b2a2b] font-serif-title mb-4">Gummies Collection Catalog</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                <template x-for="p in products" :key="p.name">
+                    <div class="p-3 border border-[#566b5e]/10 rounded-xl bg-[#f9f7f4] flex items-center gap-3">
+                        <img :src="p.img" class="w-12 h-12 object-contain rounded-lg bg-white p-1">
+                        <div>
+                            <div class="font-bold text-xs text-[#0b2a2b]" x-text="p.name"></div>
+                            <div class="text-[11px] text-[#566b5e]" x-text="p.price"></div>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function adminDashboard() {
+            return {
+                orders: (function() {
+                    try {
+                        const saved = JSON.parse(localStorage.getItem('artisan_all_orders') || '[]');
+                        if (saved.length > 0) return saved;
+                    } catch(e) {}
+                    return [
+                        {
+                            order_id: 'AP-849102',
+                            customer_name: 'Priya Sharma',
+                            customer_email: 'priya@example.com',
+                            shipping_city: 'Mumbai',
+                            shipping_state: 'Maharashtra',
+                            payment_method: 'UPI',
+                            final_total: '34.99',
+                            items: [{ name: 'Glutathione Glow Gummies' }]
+                        },
+                        {
+                            order_id: 'AP-572910',
+                            customer_name: 'Arjun Mehta',
+                            customer_email: 'arjun@example.com',
+                            shipping_city: 'Bengaluru',
+                            shipping_state: 'Karnataka',
+                            payment_method: 'Card',
+                            final_total: '49.99',
+                            items: [{ name: 'Pure Himalayan Shilajit Gummies' }]
+                        },
+                        {
+                            order_id: 'AP-193847',
+                            customer_name: 'Ananya Roy',
+                            customer_email: 'ananya@example.com',
+                            shipping_city: 'Delhi',
+                            shipping_state: 'NCR',
+                            payment_method: 'COD',
+                            final_total: '29.99',
+                            items: [{ name: 'Biotin B7 Hair, Skin & Nails' }]
+                        }
+                    ];
+                })(),
+                products: [
+                    { name: 'Biotin B7 Gummies', price: '$29.99', img: 'images/products/biotin-gummies.png' },
+                    { name: 'Glutathione Glow', price: '$34.99', img: 'images/products/glutathione-gummies.png' },
+                    { name: 'Marine Collagen Peptides', price: '$39.99', img: 'images/products/marine-collagen-gummies.png' },
+                    { name: 'Apple Cider Vinegar Detox', price: '$24.99', img: 'images/products/acv-gummies.png' },
+                    { name: 'Weight Management', price: '$29.99', img: 'images/products/weight-loss-gummies.png' },
+                    { name: 'Melatonin Sleep Gummies', price: '$27.99', img: 'images/products/sleep-gummies.png' },
+                    { name: 'Himalayan Shilajit', price: '$44.99', img: 'images/products/shilajit-gummies.png' },
+                    { name: 'Hyaluronic Acid Hydration', price: '$32.99', img: 'images/products/hyaluronic-acid-gummies.png' }
+                ]
+            };
+        }
+    </script>
+</body>
+</html>
