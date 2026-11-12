@@ -556,171 +556,626 @@
     <link rel="apple-touch-icon" href="images/artisan-logo.png">
 
     <!-- Aesthetic Micro-Interactions & Styling Engine (Gayu & Dhruva & Ashi Synthesis) -->
+    <!-- Master Aesthetic Micro-Interactions & Hover Engine (Gayu & Dhruva & Ashi Synthesis) -->
     <style id="artisan-aesthetic-micro-engine">
-        /* 1. Spring-Rotating Cross / Close Button */
+        /* ------------------------------------------------------------- */
+        /* 1. The "Living" Spring-Rotating Cross / Close Button          */
+        /* ------------------------------------------------------------- */
         .artisan-close-btn {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 9999px;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-            cursor: pointer;
-            outline: none;
-            user-select: none;
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            border-radius: 9999px !important;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            cursor: pointer !important;
+            outline: none !important;
+            user-select: none !important;
         }
         .artisan-close-btn svg {
-            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.3s ease;
+            transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.3s ease !important;
+            display: block !important;
         }
         .artisan-close-btn:hover {
-            transform: scale(1.12);
+            transform: scale(1.18) !important;
             background-color: #0b2a2b !important;
             border-color: #0b2a2b !important;
-            box-shadow: 0 4px 18px rgba(11, 42, 43, 0.28);
+            color: #ebdbc2 !important;
+            box-shadow: 0 6px 20px rgba(11, 42, 43, 0.35) !important;
         }
         .artisan-close-btn:hover svg {
-            transform: rotate(180deg);
+            transform: rotate(180deg) !important;
             stroke: #ebdbc2 !important;
         }
         .artisan-close-btn:active {
-            transform: scale(0.90) !important;
+            transform: scale(0.88) !important;
         }
 
-        /* 2. Magnetic Pill Button Hover & Lift */
-        .artisan-pill-btn {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.25s ease, border-color 0.25s ease;
-            position: relative;
-            overflow: hidden;
+        /* ------------------------------------------------------------- */
+        /* 2. Primary & Secondary CTA Buttons Hover Effects               */
+        /* ------------------------------------------------------------- */
+        .artisan-btn-primary {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.5rem !important;
+            background-color: #0b2a2b !important;
+            color: #ebdbc2 !important;
+            border: 2px solid #0b2a2b !important;
+            border-radius: 9999px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+            text-decoration: none !important;
         }
-        .artisan-pill-btn:hover {
-            transform: translateY(-2.5px);
-            box-shadow: 0 8px 24px -4px rgba(86, 107, 94, 0.25), 0 2px 6px rgba(11, 42, 43, 0.12);
+        .artisan-btn-primary:hover {
+            background-color: #566b5e !important;
+            border-color: #566b5e !important;
+            color: #ffffff !important;
+            transform: translateY(-3.5px) scale(1.025) !important;
+            box-shadow: 0 12px 28px -4px rgba(11, 42, 43, 0.38) !important;
         }
-        .artisan-pill-btn:active {
-            transform: translateY(0) scale(0.97);
+        .artisan-btn-primary .arrow-glyph {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            display: inline-block !important;
         }
-
-        /* 3. Dynamic Underline & Magnetic Arrow (Dhruva Inspiration) */
-        .artisan-link-underline {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.35rem;
-            text-decoration: none;
+        .artisan-btn-primary:hover .arrow-glyph {
+            transform: translateX(6px) !important;
         }
-        .artisan-link-underline::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 1.5px;
-            background-color: currentColor;
-            transform: scaleX(0);
-            transform-origin: left center;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .artisan-link-underline:hover::after {
-            transform: scaleX(1);
-        }
-        .artisan-link-underline .arrow-glyph {
-            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .artisan-link-underline:hover .arrow-glyph {
-            transform: translateX(4.5px);
+        .artisan-btn-primary:active {
+            transform: translateY(0) scale(0.97) !important;
         }
 
-        /* 4. Product Card Dual-Hover & Image Scale-In */
+        .artisan-btn-secondary {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 0.5rem !important;
+            background-color: transparent !important;
+            color: #566b5e !important;
+            border: 2px solid #566b5e !important;
+            border-radius: 9999px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 0.1em !important;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+            text-decoration: none !important;
+        }
+        .artisan-btn-secondary:hover {
+            background-color: #566b5e !important;
+            color: #eae4d8 !important;
+            border-color: #566b5e !important;
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 10px 24px -4px rgba(86, 107, 94, 0.32) !important;
+        }
+        .artisan-btn-secondary:active {
+            transform: translateY(0) scale(0.97) !important;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 3. Navigation Links Dynamic Underline (Dhruva Inspiration)     */
+        /* ------------------------------------------------------------- */
+        .artisan-nav-link {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.25rem !important;
+            color: #566b5e !important;
+            font-weight: 700 !important;
+            text-decoration: none !important;
+            transition: color 0.25s ease, transform 0.25s ease !important;
+            padding: 0.35rem 0 !important;
+        }
+        .artisan-nav-link::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 2px !important;
+            background-color: #0b2a2b !important;
+            transform: scaleX(0) !important;
+            transform-origin: left center !important;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .artisan-nav-link:hover {
+            color: #0b2a2b !important;
+            transform: translateY(-1px) !important;
+        }
+        .artisan-nav-link:hover::after,
+        .artisan-nav-link.is-active::after {
+            transform: scaleX(1) !important;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 4. Product Card Dual-Hover & Image Zoom Engine                 */
+        /* ------------------------------------------------------------- */
         .artisan-product-card {
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease;
-            border-radius: 24px 10px 24px 10px;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
+            border-radius: 24px 10px 24px 10px !important;
+            position: relative !important;
+            background-color: #ffffff !important;
         }
         .artisan-product-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 35px -8px rgba(11, 42, 43, 0.12), 0 6px 16px -4px rgba(11, 42, 43, 0.08);
-            border-color: rgba(86, 107, 94, 0.35);
+            transform: translateY(-8px) !important;
+            box-shadow: 0 24px 45px -10px rgba(11, 42, 43, 0.16), 0 8px 18px -4px rgba(11, 42, 43, 0.08) !important;
+            border-color: rgba(86, 107, 94, 0.45) !important;
         }
         .artisan-product-card .card-product-img {
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
         .artisan-product-card:hover .card-product-img {
-            transform: scale(1.06);
+            transform: scale(1.08) !important;
         }
 
         /* Floating Quick Action Pill Bar on Product Cards */
         .artisan-card-actions {
-            transform: translateY(12px);
-            opacity: 0;
-            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-            pointer-events: none;
+            transform: translateY(14px) !important;
+            opacity: 0 !important;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+            pointer-events: none !important;
         }
         .artisan-product-card:hover .artisan-card-actions {
-            transform: translateY(0);
-            opacity: 1;
-            pointer-events: auto;
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
         }
 
-        /* 5. Heartbeat Animation on Wishlist Toggle */
-        @keyframes heartPulse {
-            0% { transform: scale(1); }
-            40% { transform: scale(1.35); }
-            70% { transform: scale(0.9); }
-            100% { transform: scale(1); }
+        /* Add-to-bag circular plus button rotation on card hover */
+        .artisan-plus-btn {
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
         }
-        .animate-heart-pulse {
-            animation: heartPulse 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        .artisan-product-card:hover .artisan-plus-btn,
+        .artisan-plus-btn:hover {
+            transform: rotate(90deg) scale(1.15) !important;
+            background-color: #0b2a2b !important;
+            color: #ebdbc2 !important;
+            box-shadow: 0 4px 14px rgba(11, 42, 43, 0.3) !important;
         }
 
-        /* 6. Aesthetic Frosted Pebble Icon Badge */
+        /* ------------------------------------------------------------- */
+        /* 5. Aesthetic Frosted Pebble Icon Badge (Gayu & Dhruva)         */
+        /* ------------------------------------------------------------- */
         .artisan-icon-badge {
-            width: 48px;
-            height: 48px;
-            border-radius: 9999px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: rgba(86, 107, 94, 0.10);
-            border: 1px solid rgba(86, 107, 94, 0.22);
-            color: #566b5e;
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 52px !important;
+            height: 52px !important;
+            border-radius: 9999px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background-color: rgba(86, 107, 94, 0.12) !important;
+            border: 1.5px solid rgba(86, 107, 94, 0.25) !important;
+            color: #566b5e !important;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
         }
         .artisan-icon-badge:hover,
         .group:hover .artisan-icon-badge {
-            background-color: #566b5e;
-            color: #eae4d8;
-            transform: scale(1.08) rotate(4deg);
-            box-shadow: 0 6px 16px rgba(86, 107, 94, 0.28);
+            background-color: #566b5e !important;
+            color: #eae4d8 !important;
+            border-color: #566b5e !important;
+            transform: scale(1.14) rotate(6deg) !important;
+            box-shadow: 0 8px 20px rgba(86, 107, 94, 0.32) !important;
         }
 
-        /* 7. Zen Meditative Divider */
-        .zen-divider {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.25rem;
-            margin: 2.5rem auto;
-            max-width: 400px;
+        /* ------------------------------------------------------------- */
+        /* 6. Magnetic Pill Button Hover & Lift                         */
+        /* ------------------------------------------------------------- */
+        .artisan-pill-btn {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.25s ease, border-color 0.25s ease !important;
+            cursor: pointer !important;
         }
-        .zen-divider-line {
-            flex: 1;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(86, 107, 94, 0.28), transparent);
+        .artisan-pill-btn:hover {
+            transform: translateY(-2.5px) scale(1.03) !important;
+            box-shadow: 0 8px 22px -4px rgba(86, 107, 94, 0.30) !important;
+        }
+        .artisan-pill-btn:active {
+            transform: translateY(0) scale(0.96) !important;
         }
 
-        /* 8. Active Swatch Pill */
+        /* ------------------------------------------------------------- */
+        /* 7. Swatch Pills (Dhruva Variation Swatches)                   */
+        /* ------------------------------------------------------------- */
         .artisan-swatch-pill {
-            transition: all 0.25s ease;
-            cursor: pointer;
-            user-select: none;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+            user-select: none !important;
         }
         .artisan-swatch-pill:hover {
-            border-color: #566b5e;
+            transform: translateY(-1.5px) !important;
+            border-color: #566b5e !important;
+            box-shadow: 0 3px 10px rgba(86, 107, 94, 0.18) !important;
         }
         .artisan-swatch-pill.is-active {
-            background-color: #566b5e;
-            color: #eae4d8;
-            border-color: #566b5e;
-            box-shadow: 0 2px 8px rgba(86, 107, 94, 0.25);
+            background-color: #566b5e !important;
+            color: #eae4d8 !important;
+            border-color: #566b5e !important;
+            box-shadow: 0 3px 10px rgba(86, 107, 94, 0.28) !important;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 8. Heartbeat Animation on Wishlist Toggle                      */
+        /* ------------------------------------------------------------- */
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            35% { transform: scale(1.4); }
+            65% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        .animate-heart-pulse {
+            animation: heartPulse 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 9. Center Notch Logo Hover Glow                               */
+        /* ------------------------------------------------------------- */
+        .artisan-header-notch:hover .notch-logo-img {
+            transform: scale(1.10) !important;
+            filter: drop-shadow(0 6px 18px rgba(235, 219, 194, 0.6)) !important;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 10. Zen Meditative Divider                                    */
+        /* ------------------------------------------------------------- */
+        .zen-divider {
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 1.25rem !important;
+            margin: 2.5rem auto !important;
+            max-width: 420px !important;
+        }
+        .zen-divider-line {
+            flex: 1 !important;
+            height: 1px !important;
+            background: linear-gradient(90deg, transparent, rgba(86, 107, 94, 0.35), transparent) !important;
+        }
+
+        /* ------------------------------------------------------------- */
+        /* 11. Social & Utility Circular Icons Hover                      */
+        /* ------------------------------------------------------------- */
+        .artisan-social-btn {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .artisan-social-btn:hover {
+            transform: scale(1.18) translateY(-2px) !important;
+            background-color: #eae4d8 !important;
+            color: #0b2a2b !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25) !important;
+        }
+    </style>
+
+
+    <!-- ========================================================================= -->
+    <!-- MASTER HOVER & MICRO-INTERACTION ENGINE (Gayu & Dhruva & Ashi Synthesis)  -->
+    <!-- Overriding all generic/flat states with high-fidelity tactile effects     -->
+    <!-- ========================================================================= -->
+    <style id="artisan-universal-hover-engine">
+        
+        /* Slide-up Action Bar on Card Hover */
+        .product-action-bar {
+            transform: translateY(100%) !important;
+            opacity: 0 !important;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+            pointer-events: none !important;
+        }
+        .product-card:hover .product-action-bar,
+        .group:hover .product-action-bar {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        .product-action-bar button {
+            transition: all 0.25s ease !important;
+        }
+        .product-action-bar button:hover {
+            background-color: #0b2a2b !important;
+            color: #ebdbc2 !important;
+        }
+
+        /* Category Showcase Carousel Cards Hover */
+        .product-card-col > div {
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.35s ease, border-color 0.3s ease !important;
+        }
+        .product-card-col > div:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 22px 40px -8px rgba(11, 42, 43, 0.16) !important;
+            border-color: #566b5e !important;
+        }
+        .product-card-col > div:hover img {
+            transform: scale(1.08) !important;
+        }
+
+        /* 1. THE LIVING SPRING ROTATING CROSS / CLOSE BUTTON */
+        .artisan-close-btn,
+        [aria-label*="Close"],
+        [aria-label*="close"],
+        button[data-close] {
+            cursor: pointer !important;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            user-select: none !important;
+            border-radius: 9999px !important;
+        }
+        .artisan-close-btn svg,
+        [aria-label*="Close"] svg,
+        [aria-label*="close"] svg,
+        button[data-close] svg {
+            transition: transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), stroke 0.3s ease !important;
+            display: block !important;
+        }
+        .artisan-close-btn:hover,
+        [aria-label*="Close"]:hover,
+        [aria-label*="close"]:hover,
+        button[data-close]:hover {
+            transform: scale(1.18) !important;
+            background-color: #0b2a2b !important;
+            border-color: #0b2a2b !important;
+            color: #ebdbc2 !important;
+            box-shadow: 0 6px 22px rgba(11, 42, 43, 0.35) !important;
+        }
+        .artisan-close-btn:hover svg,
+        [aria-label*="Close"]:hover svg,
+        [aria-label*="close"]:hover svg,
+        button[data-close]:hover svg {
+            transform: rotate(180deg) !important;
+            stroke: #ebdbc2 !important;
+        }
+        .artisan-close-btn:active,
+        [aria-label*="Close"]:active,
+        [aria-label*="close"]:active {
+            transform: scale(0.88) !important;
+        }
+
+        /* 2. UNIVERSAL CARD HOVER & IMAGE ZOOM ENGINE ACROSS ALL PRODUCTS */
+        .artisan-product-card,
+        .product-card,
+        html body .product-card,
+        html body .discount-card-item > div,
+        html body #shine-collection .grid > .group {
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease !important;
+            cursor: pointer !important;
+            position: relative !important;
+        }
+        .artisan-product-card:hover,
+        .product-card:hover,
+        html body .product-card:hover,
+        html body .discount-card-item > div:hover,
+        html body #shine-collection .grid > .group:hover {
+            transform: translateY(-8px) !important;
+            box-shadow: 0 24px 45px -10px rgba(11, 42, 43, 0.18), 0 8px 18px -4px rgba(11, 42, 43, 0.10) !important;
+            border-color: rgba(86, 107, 94, 0.5) !important;
+        }
+
+        /* Card Image Smooth Zoom on Hover */
+        .artisan-product-card .card-product-img,
+        .artisan-product-card img,
+        .product-card img,
+        html body .product-card img,
+        html body #shine-collection .grid img {
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .artisan-product-card:hover .card-product-img,
+        .artisan-product-card:hover img,
+        .product-card:hover img,
+        html body .product-card:hover img,
+        html body #shine-collection .grid > .group:hover img {
+            transform: scale(1.08) !important;
+        }
+
+        /* Floating Quick Action Pill Bar on Card Hover */
+        .artisan-card-actions {
+            transform: translateY(14px) !important;
+            opacity: 0 !important;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease !important;
+            pointer-events: none !important;
+            z-index: 25 !important;
+        }
+        .artisan-product-card:hover .artisan-card-actions,
+        .product-card:hover .artisan-card-actions {
+            transform: translateY(0) !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+
+        /* Card Plus (+) Button Spin on Hover */
+        .artisan-plus-btn,
+        .product-card button[data-add-to-cart] {
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+        }
+        .artisan-product-card:hover .artisan-plus-btn,
+        .artisan-plus-btn:hover,
+        .product-card:hover button[data-add-to-cart] {
+            transform: rotate(90deg) scale(1.15) !important;
+            background-color: #0b2a2b !important;
+            color: #ebdbc2 !important;
+            box-shadow: 0 4px 14px rgba(11, 42, 43, 0.3) !important;
+        }
+
+        /* 3. DYNAMIC UNDERLINE & MAGNETIC ARROW LINKS (Dhruva) */
+        .artisan-nav-link,
+        .artisan-link-underline,
+        nav a:not([class*="btn"]):not([class*="bg-"]) {
+            position: relative !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            gap: 0.25rem !important;
+            transition: color 0.25s ease, transform 0.25s ease !important;
+        }
+        .artisan-nav-link::after,
+        .artisan-link-underline::after,
+        nav a:not([class*="btn"]):not([class*="bg-"])::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: -2px !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 2px !important;
+            background-color: #0b2a2b !important;
+            transform: scaleX(0) !important;
+            transform-origin: left center !important;
+            transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .artisan-nav-link:hover,
+        .artisan-link-underline:hover,
+        nav a:not([class*="btn"]):not([class*="bg-"]):hover {
+            color: #0b2a2b !important;
+            transform: translateY(-1.5px) !important;
+        }
+        .artisan-nav-link:hover::after,
+        .artisan-link-underline:hover::after,
+        nav a:not([class*="btn"]):not([class*="bg-"]):hover::after,
+        .artisan-nav-link.is-active::after {
+            transform: scaleX(1) !important;
+        }
+        .arrow-glyph {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            display: inline-block !important;
+        }
+        .artisan-link-underline:hover .arrow-glyph {
+            transform: translateX(6px) !important;
+        }
+
+        /* 4. PRIMARY & SECONDARY PILL BUTTONS HOVER */
+        .artisan-btn-primary,
+        a[href="#shop-catalog"]:not([class*="text-"]):not([class*="p-"]),
+        button[type="submit"]:not([class*="artisan-close-btn"]) {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+        }
+        .artisan-btn-primary:hover,
+        a[href="#shop-catalog"]:not([class*="text-"]):not([class*="p-"]):hover,
+        button[type="submit"]:not([class*="artisan-close-btn"]):hover {
+            background-color: #0b2a2b !important;
+            color: #ebdbc2 !important;
+            border-color: #0b2a2b !important;
+            transform: translateY(-3.5px) scale(1.03) !important;
+            box-shadow: 0 12px 28px -4px rgba(11, 42, 43, 0.40) !important;
+        }
+
+        .artisan-btn-secondary {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+        }
+        .artisan-btn-secondary:hover {
+            background-color: #566b5e !important;
+            color: #eae4d8 !important;
+            border-color: #566b5e !important;
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 10px 24px -4px rgba(86, 107, 94, 0.32) !important;
+        }
+
+        /* 5. AESTHETIC FROSTED PEBBLE ICON BADGES (Gayu & Dhruva) */
+        .artisan-icon-badge {
+            width: 52px !important;
+            height: 52px !important;
+            border-radius: 9999px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background-color: rgba(86, 107, 94, 0.12) !important;
+            border: 1.5px solid rgba(86, 107, 94, 0.25) !important;
+            color: #566b5e !important;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+        }
+        .artisan-icon-badge:hover,
+        .group:hover .artisan-icon-badge {
+            background-color: #566b5e !important;
+            color: #eae4d8 !important;
+            border-color: #566b5e !important;
+            transform: scale(1.15) rotate(6deg) !important;
+            box-shadow: 0 8px 22px rgba(86, 107, 94, 0.35) !important;
+        }
+
+        /* 6. SWATCH PILLS */
+        .artisan-swatch-pill {
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+            user-select: none !important;
+        }
+        .artisan-swatch-pill:hover {
+            transform: translateY(-2px) !important;
+            border-color: #566b5e !important;
+            box-shadow: 0 4px 12px rgba(86, 107, 94, 0.22) !important;
+        }
+        .artisan-swatch-pill.is-active {
+            background-color: #566b5e !important;
+            color: #eae4d8 !important;
+            border-color: #566b5e !important;
+            box-shadow: 0 4px 12px rgba(86, 107, 94, 0.28) !important;
+        }
+
+        /* 7. WISHLIST HEARTBEAT PULSE */
+        @keyframes heartPulse {
+            0% { transform: scale(1); }
+            35% { transform: scale(1.4); }
+            65% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        .animate-heart-pulse {
+            animation: heartPulse 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+        }
+
+        /* 8. CENTER NOTCH LOGO HOVER */
+        .artisan-header-notch {
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        .artisan-header-notch:hover {
+            transform: scale(1.06) !important;
+        }
+        .artisan-header-notch:hover .notch-logo-img {
+            transform: scale(1.10) !important;
+            filter: drop-shadow(0 6px 18px rgba(235, 219, 194, 0.65)) !important;
+        }
+
+        /* 9. TOP UTILITY BUTTONS (Currency Switcher, Cart Pill, Login) */
+        button[data-default-currency],
+        button[data-open-cart],
+        a[href="login.html"] {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+            cursor: pointer !important;
+        }
+        button[data-default-currency]:hover,
+        button[data-open-cart]:hover,
+        a[href="login.html"]:hover {
+            transform: translateY(-2px) scale(1.04) !important;
+            background-color: #eae4d8 !important;
+            color: #0b2a2b !important;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22) !important;
+        }
+        button[data-open-cart]:hover svg,
+        a[href="login.html"]:hover svg {
+            color: #0b2a2b !important;
+        }
+
+        /* 10. SOCIAL BUTTONS IN FOOTER */
+        footer a[aria-label="Instagram"],
+        footer a[aria-label="Facebook"],
+        footer a[aria-label="Pinterest"] {
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+        footer a[aria-label="Instagram"]:hover,
+        footer a[aria-label="Facebook"]:hover,
+        footer a[aria-label="Pinterest"]:hover {
+            transform: scale(1.22) translateY(-3px) !important;
+            background-color: #eae4d8 !important;
+            color: #0b2a2b !important;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35) !important;
+        }
+
+        /* 11. FAQ ACCORDION HOVER */
+        details {
+            transition: all 0.3s ease !important;
+        }
+        details:hover {
+            border-color: #566b5e !important;
+            box-shadow: 0 4px 16px rgba(86, 107, 94, 0.12) !important;
+            transform: translateY(-1.5px) !important;
         }
     </style>
 
@@ -1392,6 +1847,12 @@
                 <span class="text-[#eae4d8] text-xs">✦</span>
                 <span class="truncate">Mindful Living • Pure Botanicals</span>
             </div>
+            <!-- Interactive Living Cross Button on Announcement Bar -->
+            <button @click="showAnnouncement = false" 
+                    class="artisan-close-btn w-6 h-6 ml-3 text-[#ebdbc2]/70 hover:text-[#ebdbc2] border border-[#ebdbc2]/20 rounded-full flex items-center justify-center transition"
+                    aria-label="Dismiss Announcement">
+                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
 
             <!-- Right utility links (Currency, User, Cart) -->
             <div class="flex items-center space-x-2.5 sm:space-x-5">
@@ -1785,7 +2246,7 @@
         <!-- Mobile Left: Shop All Button (in place of drawn white box on mobile/tablet) -->
                 <div class="flex lg:hidden items-center z-10" style="flex: 1 1 0%; justify-content: flex-start;">
             <a href="#shop-catalog"
-                class="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold tracking-wider uppercase text-[#eae4d8] bg-[#566b5e] hover:bg-[#566b5e]/90 shadow-xs transition transform hover:-translate-y-0.5 whitespace-nowrap">
+                class="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-xs font-bold tracking-wider uppercase text-[#eae4d8] bg-[#566b5e] hover:bg-[#0b2a2b] transition-all duration-300/90 shadow-xs transition transform hover:-translate-y-0.5 whitespace-nowrap">
                 Shop All
             </a>
         </div>
@@ -1794,16 +2255,16 @@
         <nav class="hidden lg:flex items-center space-x-6 xl:space-x-8 text-sm font-semibold text-[#566b5e] z-10"
             style="flex: 1 1 0%; justify-content: flex-start; max-width: calc(50% - 65px);">
                                                                 <a href="index.html" target="_self"
-                        class="hover:opacity-75 transition flex items-center gap-1 py-1 whitespace-nowrap border-b-2 border-[#566b5e]">
+                        class="artisan-nav-link is-active whitespace-nowrap">
                         <span>Home</span>
                                             </a>
                                                                                 <a href="#our-story" target="_self"
-                        class="hover:opacity-75 transition flex items-center gap-1 py-1 whitespace-nowrap ">
+                        class="artisan-nav-link whitespace-nowrap">
                         <span>Our Story</span>
                                             </a>
                                                                                 <div class="relative group" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
                         <a href="#shop-catalog" target="_self"
-                            class="hover:opacity-75 transition flex items-center gap-1 py-1 ">
+                            class="artisan-nav-link">
                             <span>Shop All</span>
                             <span class="text-xs font-bold">+</span>
                         </a>
@@ -1841,11 +2302,11 @@
                         </div>
                     </div>
                                                                                 <a href="#journal" target="_self"
-                        class="hover:opacity-75 transition flex items-center gap-1 py-1 whitespace-nowrap ">
+                        class="artisan-nav-link whitespace-nowrap">
                         <span>Journal</span>
                                             </a>
                                                                                 <a href="#contact" target="_self"
-                        class="hover:opacity-75 transition flex items-center gap-1 py-1 whitespace-nowrap ">
+                        class="artisan-nav-link whitespace-nowrap">
                         <span>Contact Us</span>
                                             </a>
                                     </nav>
@@ -1868,7 +2329,7 @@
                     <span class="text-xs font-bold uppercase tracking-wider ml-1 hidden xs:inline">Bag</span>
                 </button>
             
-                            <a href="#shop-catalog"                     class="hidden md:inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs font-bold tracking-wider uppercase text-[#eae4d8] bg-[#566b5e] hover:bg-[#566b5e] shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap">
+                            <a href="#shop-catalog"                     class="hidden md:inline-flex items-center justify-center px-4 sm:px-6 py-2 sm:py-2.5 rounded-full text-xs font-bold tracking-wider uppercase text-[#eae4d8] bg-[#566b5e] hover:bg-[#0b2a2b] transition-all duration-300 shadow-md transition transform hover:-translate-y-0.5 whitespace-nowrap">
                     Shop Now
                 </a>
             
@@ -2215,7 +2676,7 @@ Everyday Wellness."
                         <!-- Primary Action Button with Dynamic Typography -->
                         <div class="pt-1 sm:pt-2 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-2.5 sm:gap-3 w-full max-w-md mx-auto lg:mx-0">
                             <a href="#shop-catalog" 
-                               class="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-9 py-3.5 sm:py-4 rounded-full text-[#eae4d8] bg-[#566b5e] hover:bg-[#566b5e] shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5"
+                               class="w-full sm:w-auto inline-flex items-center justify-center px-8 sm:px-9 py-3.5 sm:py-4 rounded-full text-[#eae4d8] bg-[#566b5e] hover:bg-[#0b2a2b] transition-all duration-300 shadow-md hover:shadow-lg transition transform hover:-translate-y-0.5"
                                style="font-family: 'Plus Jakarta Sans', 'Plus Jakarta Sans', sans-serif;
                                       font-size: 13px;
                                       font-weight: 800;
@@ -6808,7 +7269,7 @@ Everyday Wellness."
                     
                     <div class="pt-2 sm:pt-4 flex flex-col sm:flex-row justify-center lg:justify-start gap-3 w-full max-w-sm mx-auto lg:mx-0">
                         <a href="#shop-catalog" 
-                           class="w-full sm:w-auto text-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#566b5e] hover:bg-[#566b5e] text-[#eae4d8] text-xs font-black uppercase tracking-wider transition shadow-md">
+                           class="w-full sm:w-auto text-center px-7 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#566b5e] hover:bg-[#0b2a2b] transition-all duration-300 text-[#eae4d8] text-xs font-black uppercase tracking-wider transition shadow-md">
                             Shop All Gummies
                         </a>
                         <a href="#our-story" 
@@ -6859,7 +7320,7 @@ Everyday Wellness."
                        placeholder="Enter your email address" 
                        class="px-5 py-3 rounded-full bg-[#eae4d8] border border-[#566b5e]/30 text-[#566b5e] placeholder-[#566b5e]/40 text-sm focus:outline-hidden focus:ring-2 focus:ring-[#566b5e] w-full sm:w-80 font-medium">
                 <button type="submit" 
-                        class="px-7 py-3 rounded-full bg-[#566b5e] hover:bg-[#566b5e] text-[#eae4d8] text-xs font-black uppercase tracking-wider transition shadow-md whitespace-nowrap">
+                        class="px-7 py-3 rounded-full bg-[#566b5e] hover:bg-[#0b2a2b] transition-all duration-300 text-[#eae4d8] text-xs font-black uppercase tracking-wider transition shadow-md whitespace-nowrap">
                     Subscribe
                 </button>
             </form>
@@ -6883,13 +7344,13 @@ Everyday Wellness."
                     Dedicated to mindful living, pure botanical wellness gummies, and everyday clean nutrition. Rooted in plant pectin, natural vitality, and conscious wellbeing.
                 </p>
                 <div class="pt-2 flex items-center space-x-3 text-[#eae4d8]">
-                    <a href="#" class="w-8 h-8 rounded-full bg-[#eae4d8]/15 flex items-center justify-center hover:bg-[#eae4d8] hover:text-[#566b5e] transition" aria-label="Instagram">
+                    <a href="#" class="artisan-social-btn w-9 h-9 rounded-full bg-[#eae4d8]/15 flex items-center justify-center hover:bg-[#eae4d8] hover:text-[#0b2a2b] transition" aria-label="Instagram">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     </a>
-                    <a href="#" class="w-8 h-8 rounded-full bg-[#eae4d8]/15 flex items-center justify-center hover:bg-[#eae4d8] hover:text-[#566b5e] transition" aria-label="Facebook">
+                    <a href="#" class="artisan-social-btn w-9 h-9 rounded-full bg-[#eae4d8]/15 flex items-center justify-center hover:bg-[#eae4d8] hover:text-[#0b2a2b] transition" aria-label="Facebook">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                     </a>
-                    <a href="#" class="w-8 h-8 rounded-full bg-[#eae4d8]/15 flex items-center justify-center hover:bg-[#eae4d8] hover:text-[#566b5e] transition" aria-label="Pinterest">
+                    <a href="#" class="artisan-social-btn w-9 h-9 rounded-full bg-[#eae4d8]/15 flex items-center justify-center hover:bg-[#eae4d8] hover:text-[#0b2a2b] transition" aria-label="Pinterest">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.372-12 12 0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738.098.119.112.224.083.345-.09.375-.291 1.199-.332 1.365-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.631-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146 1.124.347 2.317.535 3.554.535 6.627 0 12-5.373 12-12 0-6.628-5.373-12-12-12z"/></svg>
                     </a>
                 </div>
@@ -7134,7 +7595,7 @@ Everyday Wellness."
 
                             <div class="space-y-2">
 
-                                <a href="checkout.html" class="w-full flex items-center justify-center bg-[#566b5e] hover:bg-[#566b5e] text-[#eae4d8] py-3.5 px-6 rounded-full font-bold text-xs uppercase tracking-wider transition shadow-md">
+                                <a href="checkout.html" class="w-full flex items-center justify-center bg-[#566b5e] hover:bg-[#0b2a2b] transition-all duration-300 text-[#eae4d8] py-3.5 px-6 rounded-full font-bold text-xs uppercase tracking-wider transition shadow-md">
 
                                     Proceed to Checkout
 
@@ -7335,7 +7796,7 @@ Everyday Wellness."
 
             @click="window.scrollTo({top: 0, behavior: 'smooth'})"
 
-            class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#566b5e] hover:bg-[#566b5e] text-[#eae4d8] shadow-xl flex items-center justify-center transition-all transform hover:scale-110 active:scale-95 border border-[#eae4d8]/40"
+            class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-40 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#566b5e] hover:bg-[#0b2a2b] transition-all duration-300 text-[#eae4d8] shadow-xl flex items-center justify-center transition-all transform hover:scale-110 active:scale-95 border border-[#eae4d8]/40"
 
             aria-label="Back to top"
 
