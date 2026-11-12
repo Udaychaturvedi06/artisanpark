@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/checkout", "destination": "/checkout.html" },
+    { "source": "/login", "destination": "/login.html" },
+    { "source": "/admin", "destination": "/admin-dashboard.html" },
+    { "source": "/dashboard", "destination": "/admin-dashboard.html" },
+    { "source": "/order-success", "destination": "/order-success.html" }
+  ],
+  "headers": [
+    {
+      "source": "/images/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
+    {
+      "source": "/build/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" },
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,11 @@
 {
-  "name": "artisanpark-replica",
+  "name": "artisanpark",
   "version": "1.0.0",
-  "description": "Replica of The Artisan Park (https://web.theartisanpark.com) - Mindful Living & Custom Artisan E-Commerce",
-  "main": "server.js",
+  "description": "The Artisan Park — Mindful Living & Custom Artisan E-Commerce",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js"
+    "dev": "node server.js",
+    "build": "echo 'Static site ready for Vercel deployment'"
   },
   "keywords": [
     "artisanpark",
@@ -14,6 +14,6 @@
     "alpinejs",
     "wellness-gummies"
   ],
-  "author": "",
+  "author": "Uday <chaturvediuday06@gmail.com>",
   "license": "ISC"
 }
