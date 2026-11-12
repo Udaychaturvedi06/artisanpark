@@ -1,6 +1,4 @@
-# The Artisan Park — Website Replica & Extension Base
 
-Full replica of [web.theartisanpark.com](https://web.theartisanpark.com) with offline asset bundling, interactive shopping bag drawer, quick view modal, currency toggle (USD / INR), responsive checkout with discount promo codes, and administrative control panel.
 
 ---
 
