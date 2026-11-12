@@ -4,8 +4,7 @@
   "description": "The Artisan Park — Mindful Living & Custom Artisan E-Commerce",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js",
-    "build": "echo 'Static site ready for Vercel deployment'"
+    "dev": "node server.js"
   },
   "keywords": [
     "artisanpark",

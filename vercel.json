@@ -1,7 +1,13 @@
 {
   "version": 2,
+  "framework": null,
   "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
+    { "source": "/images/(.*)", "destination": "/images/$1" },
+    { "source": "/build/(.*)", "destination": "/build/$1" },
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
+    { "source": "/favicon.png", "destination": "/favicon.png" },
     { "source": "/checkout", "destination": "/checkout.html" },
     { "source": "/login", "destination": "/login.html" },
     { "source": "/admin", "destination": "/admin-dashboard.html" },
@@ -9,6 +15,12 @@
     { "source": "/order-success", "destination": "/order-success.html" }
   ],
   "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    },
     {
       "source": "/images/(.*)",
       "headers": [
